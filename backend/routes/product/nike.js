@@ -1,9 +1,9 @@
 const express=require('express')
 const router=express.Router()
-const {getAllNikeproducts,getProductsByName}=require('../../controllers/products')
+const {getAllproducts,getProductsByName}=require('../../controllers/products')
 
-router.get('/', getAllNikeproducts);
-router.get('/:id',getProductsByName)
+router.get('/:brand/:page', getAllproducts);
+router.get('/:brand',getProductsByName)
 
 
 module.exports=router

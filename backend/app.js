@@ -10,7 +10,7 @@ const nikeRoutes=require('./routes/product/nike')
 app.use(express.json())
 
 // routes
-app.use('/api/v1/nike',nikeRoutes)
+app.use('/api/v1',nikeRoutes)
 
 // incorrect routes
 app.use(notFound)

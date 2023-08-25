@@ -1,11 +1,16 @@
 [
     {
         "brand":"nike",
-        "name":"nike1"
+        "name":"nike1",
+        "size":{
+            "38":4212,
+            "39":2001
+        }
     },
     {
         "brand":"nike",
         "name":"nike2"
+        
     },
     {
         "brand":"nike",
