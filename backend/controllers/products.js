@@ -1,9 +1,12 @@
-const getAllproducts=async (req,res)=>{
+const shoes=require('../models/schema')
 
-   await res.send('testing get all products')
+
+const getAllNikeproducts=async (req,res)=>{
+   const nikeShoes=await shoes.find({brand:'nike'})
+   res.status(200).json({nikeShoes})
 }
 
-const getProductsByID=async (req,res)=>{
+const getProductsByName=async (req,res)=>{
     
      res.json(`The id is ${req.params.id}`)
  }
@@ -11,4 +14,4 @@ const getProductsByID=async (req,res)=>{
 
 
 
-module.exports={getAllproducts,getProductsByID}
+module.exports={getAllNikeproducts,getProductsByName}
