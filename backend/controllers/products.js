@@ -30,10 +30,4 @@ const getProductsByName=async (req,res)=>{
     res.status(200).json({selectShoe})
  }
 
-
-
-
-
-
-
 module.exports={getAllproducts,getProductsByName}

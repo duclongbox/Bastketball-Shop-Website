@@ -6,11 +6,13 @@ require('express-async-errors');
 const {notFound,errorHandler}=require('./middleware/error')
 const connectDB=require('./database/db')
 const nikeRoutes=require('./routes/product/nike')
+const payRouters=require('./routes/payment/payment')
 // middleware
 app.use(express.json())
 
 // routes
 app.use('/api/v1',nikeRoutes)
+app.use('/api/v1/payment',payRouters)
 
 // incorrect routes
 app.use(notFound)
