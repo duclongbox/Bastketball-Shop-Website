@@ -17,9 +17,7 @@ const shoeSchema=new mongoose.Schema({
         required:[true,'must provide a size'],
         default:()=>{
             const sizePrice={};
-            size.forEach((Size)=>{
-                sizePrice[Size]=-1
-            })
+            sizePrice["-1"]=-1
             return sizePrice
         }
         
