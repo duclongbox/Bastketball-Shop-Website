@@ -5,16 +5,16 @@
 Node.js
 
 ## Library:
-express.js
+Express.js
 
 ## Database
 MongoDB
 
 ## Features
-  1. fetch the shoe data from database based on the page number and brand
-  2. fetch the data from database based on shoe name and size
-  3. create the payment order, fetch the price from shoe database and add this element to order
-  4. fetch all order information from order database based on user id
-  5. fetch a specific order information from order database based on user id and order id
-  6. delete order based on user id and order id
+  1. fetch the shoe data from the database based on the page number and brand
+  2. fetch the data from the database based on shoe name and size
+  3. create the payment order, fetch the price from the shoe database, and add this element to the order
+  4. fetch all order information from the order database based on user ID
+  5. fetch specific order information from the order database based on the user ID and order ID
+  6. delete order based on user ID and order ID
   7. update the order information
