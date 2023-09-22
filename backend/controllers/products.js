@@ -24,10 +24,18 @@ const getAllproducts=async (req,res)=>{
 
 // get the specific nike shoe by the name
 const getProductsByName=async (req,res)=>{
-    const {brand}=req.params
-    const {name}=req.query
-    const selectShoe=await shoes.find({brand:brand,name:name}).select('brand name size')
-    res.status(200).json({selectShoe})
+    const {name}=req.params
+    const {size}=req.query
+      let query={name:name}
+      let selectShoe
+      if (size) {
+         query.size=size
+          selectShoe=await shoes.find(query).select('brand name size price')
+      }
+      else { selectShoe=await shoes.find(query).select('brand name size')}
+      res.status(200).json({selectShoe})
  }
+
+
 
 module.exports={getAllproducts,getProductsByName}

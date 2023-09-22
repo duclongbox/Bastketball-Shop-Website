@@ -13,14 +13,10 @@ const shoeSchema=new mongoose.Schema({
         required:[true,'must provide a brand']
     },
     size:{
-        type:Object,
-        required:[true,'must provide a size'],
-        default:()=>{
-            const sizePrice={};
-            sizePrice["-1"]=-1
-            return sizePrice
-        }
-        
+        type:Number
+    },
+    price:{
+        type:Number
     }
 
     

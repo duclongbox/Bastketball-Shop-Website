@@ -13,10 +13,27 @@ const paySchema=new mongoose.Schema({
         type:String,
         require:[true,"must provide a email"]
     },
-    productID:{
+    shoeName:{
         type:String,
-        
+        require:[true,"must provide a shoe name"]
+    },
+    size:{
+        type:Number,
+        require:[true,"must provide a shoe size"]
+    },
+    userID:{
+        type:String,
+        require:[true,"must provide a user ID"]
+    },
+    orderID:{
+        type:String,
+        require:[true,"must provide a order ID"]
+    },
+    price:{
+        type:Number,
+        default:0
     }
+
 
 })
 
