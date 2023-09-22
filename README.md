@@ -18,3 +18,12 @@ MongoDB
   5. fetch specific order information from the order database based on the user ID and order ID
   6. delete order based on user ID and order ID
   7. update the order information
+
+
+**Scrape Data**
+# Library:
+BeautifulSoup4
+Requests
+## Features
+  1. Crawling/Scraping shoes ( name, price ) from a website.
+  2. Return the data in csv file. 
