@@ -30,7 +30,7 @@ const NikeComponent = () => {
           <p>Name: {item.name}</p>
           <p>Brand: {item.brand}</p>
           <Link to='dwd' >
-        <img src={item.imageURL} alt="dww" className="h-40 " />
+        <img src={item.imageURL} alt="dww" className="h-40 w-auto max-w-30" />
         </Link>
         </div>
       ))}
