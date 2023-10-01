@@ -6,7 +6,7 @@ const getAllproducts=async (req,res)=>{
    const page = parseInt(req.query.page);
    // get the page number for this brand
    if (page===0) {
-      const allShoes=await shoes.find({brand:brand}).select('id brand name')
+      const allShoes=await shoes.find({brand:brand}).select('id brand name imageURL')
       res.status(200).json(allShoes)
    }
    else{

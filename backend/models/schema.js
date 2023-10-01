@@ -15,7 +15,11 @@ const shoeSchema=new mongoose.Schema({
         type:String,
         required:[true,'must provide a brand']
     },
-    sizes: [sizePriceSchema]
+    sizes: [sizePriceSchema],
+    imageURL:{
+        type:String,
+        require:[true,'need a image to show the shoes']
+    }
 })
 
 module.exports=mongoose.model('shoe',shoeSchema)
