@@ -2,104 +2,416 @@
     {
         "brand":"nike",
         "name":"nike1",
-        "size":38,
-        "price":200
+        "sizes": [
+            {
+              "size": 7,
+              "price": 99.99
+            },
+            {
+              "size": 8,
+              "price": 109.99
+            },
+            {
+              "size": 9,
+              "price": 119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike1",
-        "size":39,
-        "price":2001
-        
+        "name":"nike2",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike1",
-        "size":39,
-        "price":2001
+        "name":"nike3",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike4"
+        "name":"nike4",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike5"
+        "name":"nike5",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike6"
+        "name":"nike6",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike7"
+        "name":"nike7",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike8"
+        "name":"nike8",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike9"
+        "name":"nike9",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike10"
+        "name":"nike10",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike11"
+        "name":"nike11",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike12"
+        "name":"nike12",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike13"
+        "name":"nike13",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike14"
+        "name":"nike14",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike15"
+        "name":"nike15",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike16"
+        "name":"nike16",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike17"
+        "name":"nike17",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike18"
+        "name":"nike18",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike19"
+        "name":"nike19",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike20"
+        "name":"nike20",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
         "brand":"nike",
-        "name":"nike21"
+        "name":"nike21",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
-        "brand":"adidas",
-        "name":"adidasshoe1"
+        "brand":"nike",
+        "name":"nike22",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     },
     {
-        "brand":"adidas",
-        "name":"adidasshoe12"
-    },
-    {
-        "brand":"jordan",
-        "name":"jordan1"
+        "brand":"nike",
+        "name":"nike23",
+        "sizes": [
+            {
+              "size": 7,
+              "price": 89.99
+            },
+            {
+              "size": 8,
+              "price": 209.99
+            },
+            {
+              "size": 9,
+              "price": 1119.99
+            }
+        ]
     }
+   
 ]

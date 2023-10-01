@@ -11,8 +11,9 @@ function App() {
     <div>
       <Router>
       <Header />
-      <Brands />
       <Routes>
+    
+      <Route path="/" element={  <Brands />} />
           <Route path="/nike" element={<NikeComponent />} />
           <Route path="/jordan" element={<JordanComponent />} />
           <Route path="/adidas" element={<AdidasComponent />} />

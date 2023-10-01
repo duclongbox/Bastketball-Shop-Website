@@ -6,10 +6,8 @@ const getAllproducts=async (req,res)=>{
    const page = parseInt(req.query.page);
    // get the page number for this brand
    if (page===0) {
-      const numOfShoe=(await shoes.find({brand:brand})).length
-      const numOfPage=numOfShoe/10
-      console.log(numOfPage);
-      res.status(200).json(numOfPage)
+      const allShoes=await shoes.find({brand:brand}).select('id brand name')
+      res.status(200).json(allShoes)
    }
    else{
    const pagePerItem=10

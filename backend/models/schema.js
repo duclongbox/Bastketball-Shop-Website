@@ -1,6 +1,9 @@
 const mongoose=require('mongoose')
 
-const size=["38","39","40","41","42","43","44","45"]
+const sizePriceSchema = new mongoose.Schema({
+    size: { type: Number, required: true },
+    price: { type: Number, required: true }
+  });
 
 const shoeSchema=new mongoose.Schema({
     brand:{
@@ -12,14 +15,7 @@ const shoeSchema=new mongoose.Schema({
         type:String,
         required:[true,'must provide a brand']
     },
-    size:{
-        type:Number
-    },
-    price:{
-        type:Number
-    }
-
-    
+    sizes: [sizePriceSchema]
 })
 
 module.exports=mongoose.model('shoe',shoeSchema)
