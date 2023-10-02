@@ -23,15 +23,15 @@ const NikeComponent = () => {
   }, []);
  
   return (
-    <div>
+    <div className="grid lg:grid-cols-3 gap-4 pl-44 pt-10">
       {data.map((item, index) => (
 
-        <div key={index}>
+        <div key={item._id} className="p-10">
+        <Link to='dwd' >
+        <img src={item.imageURL} alt="dww" className="h-40 w-auto max-w-30" />
           <p>Name: {item.name}</p>
           <p>Brand: {item.brand}</p>
-          <Link to='dwd' >
-        <img src={item.imageURL} alt="dww" className="h-40 w-auto max-w-30" />
-        </Link>
+          </Link>
         </div>
       ))}
 
