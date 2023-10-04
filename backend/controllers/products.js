@@ -31,7 +31,7 @@ const getProductsByName = async (req, res) => {
   let query = { name: name };
   let selectShoe;
   query.size = size;
-  selectShoe = await shoes.find(query).select("_id brand name size imageURL");
+  selectShoe = await shoes.find(query).select("_id brand name sizes imageURL");
   res.status(200).json( selectShoe[0] );
 };
 
