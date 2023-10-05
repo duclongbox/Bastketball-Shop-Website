@@ -13,14 +13,15 @@ const ShoeInfo = () => {
       try {
         const response = await fetch(`api/v1/name/${shoeName}`);
         const apiData = await response.json();
-         setData(apiData);
+        setData(apiData);
         // get the cheapest size with price
-        let price=999999
+        let price = 999999;
         for (let index = 0; index < apiData.sizes.length; index++) {
-          if (price>apiData.sizes[index].price) {
-            price=apiData.sizes[index].price
-            setIndex(index)
-          }}
+          if (price > apiData.sizes[index].price) {
+            price = apiData.sizes[index].price;
+            setIndex(index);
+          }
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -34,11 +35,11 @@ const ShoeInfo = () => {
   const handelOpen = () => {
     setOpen(!open);
   };
- 
-  const handelClickShoe=((index)=>{
-    setIndex(index)
-    handelOpen()
-  })
+
+  const handelClickShoe = (index) => {
+    setIndex(index);
+    handelOpen();
+  };
 
   return (
     <div className="flex">
@@ -46,24 +47,37 @@ const ShoeInfo = () => {
         <h1 className="font-bold">{data.name}</h1>
         <img src={data.imageURL} alt={data.name} className="h-80 w-auto " />
       </div>
-      
+
       <div className=" p-8 ml-80  ">
-      <h1>Choose your Size!</h1>
-        <button onClick={()=>handelOpen()} className="bg-black text-white px-2 py-1 rounded hover:bg-gray-700 w-full">Size:{data.sizes && data.sizes.length > 0 && <div>{data.sizes[index].size}</div>}
-</button>
+        <h1>Choose your Size!</h1>
+        <button
+          onClick={() => handelOpen()}
+          className="bg-black text-white px-2 py-1 rounded hover:bg-gray-700 w-full"
+        >
+          Size:
+          {data.sizes && data.sizes.length > 0 && (
+            <div>{data.sizes[index].size}</div>
+          )}
+        </button>
         {open ? (
           <ul className="px-7 py-2">
             {data.sizes.map((item, index) => (
-              <div key={item._id} >
-                <button onClick={() => handelClickShoe(index)} className="px-7 py-2">
+              <div key={item._id}>
+                <button
+                  onClick={() => handelClickShoe(index)}
+                  className="px-7 py-2"
+                >
                   Size: {item.size} Price: {item.price}
                 </button>
               </div>
             ))}
           </ul>
         ) : null}
-         {data.sizes&&!open?<button className="rounded bg-green-800 text-white hover:bg-green-900 px-7 py-2 m-6">Buy CA$ {data.sizes[index].price}</button>:null} 
-        
+        {data.sizes && !open ? (
+          <button className="rounded bg-green-800 text-white hover:bg-green-900 px-7 py-2 m-6">
+            Buy CA$ {data.sizes[index].price}
+          </button>
+        ) : null}
       </div>
     </div>
   );

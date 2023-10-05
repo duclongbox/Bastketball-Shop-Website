@@ -31,7 +31,7 @@ const NikeComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("api/v1/brand/nike?page=0");
+        const response = await fetch("api/v1/brand/nike");
         const apiData = await response.json();
         setData(apiData);
       } catch (error) {

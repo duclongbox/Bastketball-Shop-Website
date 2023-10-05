@@ -7,13 +7,14 @@ const {notFound,errorHandler}=require('./middleware/error')
 const connectDB=require('./database/db')
 const nikeRoutes=require('./routes/product/nike')
 const payRouters=require('./routes/payment/payment')
+const userRoute=require('./routes/user/users')
 // middleware
 app.use(express.json())
 
 // routes
 app.use('/api/v1',nikeRoutes)
 app.use('/api/v1/payment',payRouters)
-
+app.use('/api/v1/logIn',userRoute)
 // incorrect routes
 app.use(notFound)
 app.use(errorHandler)
