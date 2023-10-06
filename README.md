@@ -19,6 +19,10 @@ MongoDB
   6. delete order based on user ID and order ID
   7. update the order information
 
+# Front-end
+## Library
+React, Tailwind
+
 
 # Scrape Data
 # Library:
