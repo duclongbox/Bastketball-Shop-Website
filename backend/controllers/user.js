@@ -10,10 +10,11 @@ const createUser = async (req, res) => {
     const saltRounds = 10;
     bcrypt.hash(password, saltRounds, async function (err, hash) {
       if (err) {
+        res.send(err)
         console.log(`get some error ${err}`);
       } else {
         await users.create({ userID: userID, password: hash });
-        res.status(200).json({ userID: userID, password: hash });
+        res.status(200).json({ success: true  });
       }
     });
   }
