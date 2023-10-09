@@ -1,5 +1,10 @@
+require('dotenv').config({path:'../.env'})
 const users = require("../models/user");
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
+const secretKey=process.env.SECRET_KEY
+
 const createUser = async (req, res) => {
   const body = req.body;
   let { userID, password } = body;
@@ -32,6 +37,8 @@ const getUser=async(req,res)=>{
           res.send(`Have some error ${err}`)
         }
         else if (result) {
+          const token=jwt.sign({userID},secretKey,{expiresIn:'1h'})
+          res.cookie('token',token,{ expires: new Date(Date.now() + 3600000),httpOnly: true})
           res.status(200).json({success:true})
         }
         else{

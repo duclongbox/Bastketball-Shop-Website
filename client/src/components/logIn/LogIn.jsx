@@ -27,6 +27,7 @@ const LogIn = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
+      withCredentials: true
     })
       .then((response) => response.json())
       .then((data) => {

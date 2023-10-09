@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express=require('express')
+var cookieParser = require('cookie-parser')
 const app=express()
 // replace the try-catch in routes
 require('express-async-errors');
@@ -10,7 +11,7 @@ const payRouters=require('./routes/payment/payment')
 const userRoute=require('./routes/user/users')
 // middleware
 app.use(express.json())
-
+app.use(cookieParser())
 // routes
 app.use('/api/v1',nikeRoutes)
 app.use('/api/v1/payment',payRouters)
