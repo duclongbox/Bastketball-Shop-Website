@@ -6,5 +6,5 @@ const {createUser,getUserByLogIn,getUserByToken,logOut}=require('../../controlle
 router.post('/signUp',createUser)
 router.post('/logIn',getUserByLogIn)
 router.get('/token',verifyToken,getUserByToken)
-router.post('/logOut',logOut)
+router.get('/logOut',logOut)
 module.exports=router;
