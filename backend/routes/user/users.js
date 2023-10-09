@@ -1,8 +1,9 @@
 const express=require('express')
 const router=express.Router()
 
-const {createUser,getUser}=require('../../controllers/user')
+const {createUser,getUserByLogIn,getUserByToken}=require('../../controllers/user')
 
 router.post('/signUp',createUser)
-router.post('/logIn',getUser)
+router.post('/logIn',getUserByLogIn)
+router.get('/token',getUserByToken)
 module.exports=router;

@@ -7,7 +7,7 @@ const getAllproducts = async (req, res) => {
   const allShoes = await shoes
     .find({ brand: brand })
     .select("id brand name imageURL");
-  res.status(200).json(allShoes);
+ return res.status(200).json(allShoes);
 };
 
 // get the specific nike shoe by the name
@@ -19,7 +19,7 @@ const getProductsByName = async (req, res) => {
   let selectShoe;
   query.size = size;
   selectShoe = await shoes.find(query).select("_id brand name sizes imageURL");
-  res.status(200).json(selectShoe[0]);
+  return res.status(200).json(selectShoe[0]);
 };
 
 module.exports = { getAllproducts, getProductsByName };

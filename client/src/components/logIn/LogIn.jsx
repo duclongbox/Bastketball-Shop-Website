@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-const LogIn = () => {
+import { useNavigate } from "react-router-dom";
+const LogIn = ({updateState}) => {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     userID: "",
     password: "",
   });
-  const [state, setState] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,8 +33,9 @@ const LogIn = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          setState(true)
+          updateState(true);
           console.log(data);
+          navigate("/sLogInPage")
         }
       })
       .catch((error) => console.error(error));
@@ -41,7 +43,6 @@ const LogIn = () => {
 
   return (
     <div>
-      {!state ? (
         <div className="flex flex-col items-center justify-center h-screen">
           <img src="image/logIn.jpg" alt="not load" className="w-28 mb-4 " />
           <p className="text-3xl font-semibold">Log In</p>
@@ -81,11 +82,10 @@ const LogIn = () => {
               >
                 Submit
               </button>
-              <Link to="/signUp">Sign Up</Link>
+              <Link to="/singUp">Sign Up</Link>
             </div>
           </form>
         </div>
-      ) : (<Link to="/"></Link>)}
     </div>
   );
 };
