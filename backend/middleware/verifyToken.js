@@ -11,9 +11,8 @@ const verifyToken=((req,res,next)=>{
             return res.status(401).json({success:false,message:"Unauthorized"})
         }
         req.userID=decoded.userID
-        console.log(decoded);
         next();
     })
 })
 
-module.exports=verifyToken
+module.exports={verifyToken}

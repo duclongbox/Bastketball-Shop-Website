@@ -1,9 +1,7 @@
 require('dotenv').config({path:'../.env'})
 const users = require("../models/user");
-const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
-const {verifyToken}=require("../middleware/verifyToken")
 const secretKey=process.env.SECRET_KEY
 
 const createUser = async (req, res) => {
@@ -53,10 +51,14 @@ const getUserByLogIn=async(req,res)=>{
     }
 }
 
-const getUserByToken =(verifyToken,async (req,res)=>{
+const getUserByToken =async(req,res)=> {
   const userID=req.userID;
   const userInfo=await users.findOne({userID:userID}).select("userID")
   return res.status(200).json({success:true,userInfo});
-})
+}
 
-module.exports = { createUser,getUserByLogIn,getUserByToken };
+const logOut=async(req,res)=>{
+  return res.status(200).clearCookie('token').json({message:"successfully log out"})
+}
+
+module.exports = { createUser,getUserByLogIn,getUserByToken,logOut };
