@@ -16,7 +16,7 @@ React, Tailwind
 
 # Log In System
 ## Features
-     1.generate hash passwords and store them in db when users sign up
+1. generate hash passwords and store them in db when users sign up
      ![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/8ee4ef21-02b4-4cff-a06f-5caef864933d)
      
 
