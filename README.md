@@ -10,18 +10,22 @@ Express.js
 ## Database
 MongoDB
 
-## Features
-  1. fetch the shoe data from the database based on the page number and brand
-  2. fetch the data from the database based on shoe name and size
-  3. create the payment order, fetch the price from the shoe database, and add this element to the order
-  4. fetch all order information from the order database based on user ID
-  5. fetch specific order information from the order database based on the user ID and order ID
-  6. delete order based on user ID and order ID
-  7. update the order information
-
 # Front-end
 ## Library
 React, Tailwind
+
+# Log In System
+## Features
+  1. generate hash passwords and store them in db when users sign up
+  2. generate a cookie and send it back to the front end when the user logs in
+  3. user don't need to log in again when they refresh the page based on the cookie
+  4. destroy the cookie in the backend when the user logs out
+     
+
+# Cart 
+## Features
+  1. working on it
+
 
 
 # Scrape Data
