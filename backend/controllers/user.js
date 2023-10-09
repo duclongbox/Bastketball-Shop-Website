@@ -20,8 +20,29 @@ const createUser = async (req, res) => {
   }
 };
 
+// get a specific user info
 const getUser=async(req,res)=>{
-    
+    const body=req.body
+    const {userID,password}=body;
+    let hash
+    if (hash=await users.findOne({userID: userID}).select("password")) {
+      hash=hash.password
+      bcrypt.compare(password, hash, function(err, result) {
+        if (err) {
+          res.send(`Have some error ${err}`)
+        }
+        else if (result) {
+          res.status(200).json({success:true})
+        }
+        else{
+          res.status(401).json({success:false})
+        }
+    });
+     
+    }
+    else{
+      res.status(404).json({success:false})
+    }
 }
 
-module.exports = { createUser };
+module.exports = { createUser,getUser };

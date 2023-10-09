@@ -5,13 +5,14 @@ import { useParams } from "react-router-dom";
 const ShoeInfo = () => {
   // get the specific shoe info
   const { shoeName } = useParams();
+  console.log(shoeName);
   // get the information based on this shoe
   const [data, setData] = useState([]);
   const [index, setIndex] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`api/v1/name/${shoeName}`);
+        const response = await fetch(`../api/v1/name/${shoeName}`);
         const apiData = await response.json();
         setData(apiData);
         // get the cheapest size with price
