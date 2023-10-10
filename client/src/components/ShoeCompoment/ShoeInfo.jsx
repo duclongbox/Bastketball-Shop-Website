@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { useParams } from "react-router-dom";
 
-const ShoeInfo = () => {
+const ShoeInfo = (props) => {
   // get the specific shoe info
   const { shoeName } = useParams();
-  console.log(shoeName);
   // get the information based on this shoe
   const [data, setData] = useState([]);
   const [index, setIndex] = useState(0);
+  const [displayAdd,setDisplayAdd]=useState(false)
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`../api/v1/name/${shoeName}`);
+        const response = await fetch(`api/v1/name/${shoeName}`);
         const apiData = await response.json();
         setData(apiData);
         // get the cheapest size with price
@@ -29,7 +29,26 @@ const ShoeInfo = () => {
     };
     fetchData();
   }, []);
-  console.log(data);
+
+
+  const handelBuyButton=()=>{
+
+    if (props.isLogIn) {
+      fetch("/api/v1/logIn/addCart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({index:index,shoeID:data._id}),
+        withCredentials: true
+      })
+        .then((response) => response.json())
+        
+        .catch((error) => console.error(error));
+    }
+    
+    setDisplayAdd(true)
+  }
 
   // // handel the select bar
   const [open, setOpen] = useState(false);
@@ -75,10 +94,12 @@ const ShoeInfo = () => {
           </ul>
         ) : null}
         {data.sizes && !open ? (
-          <button className="rounded bg-green-800 text-white hover:bg-green-900 px-7 py-2 m-6">
+          <button onClick={handelBuyButton} className="rounded bg-green-800 text-white hover:bg-green-900 px-7 py-2 m-6">
             Buy CA$ {data.sizes[index].price}
           </button>
         ) : null}
+
+        {displayAdd?(props.isLogIn?(<p className="font-bold">Shoe {data.name} has been added into your cart</p>):(<p className="font-bold">Please Log In first</p>)):null}
       </div>
     </div>
   );

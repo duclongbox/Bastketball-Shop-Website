@@ -37,7 +37,7 @@ function App() {
       <Routes>
           <Route path="/" element={  <Brands />} />
           <Route path="/nike" element={<NikeComponent />} />
-          <Route path="/shoe/:shoeName" element={<ShoeInfo />} />
+          <Route path=":shoeName" element={<ShoeInfo isLogIn={isLogIn} />} />
           <Route path="/jordan" element={<JordanComponent />} />
           <Route path="/adidas" element={<AdidasComponent />} />
           <Route path="/singUp" element={<LogUp />} />

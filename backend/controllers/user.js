@@ -61,4 +61,37 @@ const logOut=async(req,res)=>{
   return res.status(200).clearCookie('token').json({message:"successfully log out"})
 }
 
-module.exports = { createUser,getUserByLogIn,getUserByToken,logOut };
+const addShoeToCart=async(req,res)=>{
+  // get userID from token
+  const token=req.cookies.token
+  let userID
+  if (!token) {
+    return res.status(401).send("token missing")
+  }
+  jwt.verify(token,secretKey,(err,decoded)=>{
+    if (err) {
+      return res.status(401).json({success:false,message:"Unauthorized"})
+  }
+  else{
+    userID=decoded.userID
+  }
+  })
+  // get shoe info from req
+  const body=req.body
+  console.log(body);
+  console.log(userID);
+  const newItem={
+    shoeID:body.userID,
+    index:body.index
+  }
+  const updateInfo=await users.findOneAndUpdate(
+    {userID:userID},
+    { $push: { addedItem: newItem } },
+    { new: true }
+  )
+  return res.status(200).json({ success: true, message: "Shoe added to cart", user: updateInfo});
+  
+
+}
+
+module.exports = { createUser,getUserByLogIn,getUserByToken,logOut,addShoeToCart };

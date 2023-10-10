@@ -19,9 +19,6 @@ const LogIn = ({updateState}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can perform form validation or send the data to your API here
-    console.log("Form submitted with data:", formData);
-    // Example: Sending data to an API endpoint using fetch
     fetch("/api/v1/logIn/logIn", {
       method: "POST",
       headers: {

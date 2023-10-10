@@ -9,7 +9,7 @@ function Items({ currentItems }) {
       {currentItems &&
         currentItems.map((item) => (
           <div key={item._id} className="p-10">
-            <Link to={`../shoe/${item.name}`}>
+            <Link to={`../${item.name}`}>
               <img
                 src={item.imageURL}
                 alt={item.name}
