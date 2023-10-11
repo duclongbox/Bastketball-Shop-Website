@@ -27,6 +27,7 @@ React, Tailwind
      
 
 # Cart 
+![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/c9475f24-3ee0-47fe-969b-f74cf08c5f4d)
 ## Features
   1. working on it
 
