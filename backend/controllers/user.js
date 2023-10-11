@@ -61,27 +61,12 @@ const logOut=async(req,res)=>{
   return res.status(200).clearCookie('token').json({message:"successfully log out"})
 }
 
-const addShoeToCart=async(req,res)=>{
-  // get userID from token
-  const token=req.cookies.token
-  let userID
-  if (!token) {
-    return res.status(401).send("token missing")
-  }
-  jwt.verify(token,secretKey,(err,decoded)=>{
-    if (err) {
-      return res.status(401).json({success:false,message:"Unauthorized"})
-  }
-  else{
-    userID=decoded.userID
-  }
-  })
+const addShoeToCart=async (req,res)=>{
   // get shoe info from req
+  const userID=req.userID
   const body=req.body
-  console.log(body);
-  console.log(userID);
   const newItem={
-    shoeID:body.userID,
+    shoeID:body.shoeID,
     index:body.index
   }
   const updateInfo=await users.findOneAndUpdate(
@@ -90,8 +75,20 @@ const addShoeToCart=async(req,res)=>{
     { new: true }
   )
   return res.status(200).json({ success: true, message: "Shoe added to cart", user: updateInfo});
-  
-
 }
 
-module.exports = { createUser,getUserByLogIn,getUserByToken,logOut,addShoeToCart };
+const getCart=async (req,res)=>{
+  // get user info
+  const userID=req.userID
+  if (userID) {
+    const foundUser=await users.findOne({userID:userID}).select("userID addedItem favorItem")
+    res.status(200).json(foundUser)
+  }
+  else{
+    res.status(404).json({success:false,message:"Unable to find this user"})
+  }
+  
+  
+}
+
+module.exports = { createUser,getUserByLogIn,getUserByToken,logOut,addShoeToCart,getCart };

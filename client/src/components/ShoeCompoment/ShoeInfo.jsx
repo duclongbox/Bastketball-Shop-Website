@@ -30,7 +30,8 @@ const ShoeInfo = (props) => {
     fetchData();
   }, []);
 
-
+  console.log(data);
+  console.log(data._id);
   const handelBuyButton=()=>{
 
     if (props.isLogIn) {

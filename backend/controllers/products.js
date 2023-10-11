@@ -22,4 +22,12 @@ const getProductsByName = async (req, res) => {
   return res.status(200).json(selectShoe[0]);
 };
 
-module.exports = { getAllproducts, getProductsByName };
+const getProductInCart=async(req,res)=>{
+  const {id}=req.params
+  const {index}=req.query
+  let selectShoe=await shoes.findOne({_id:id}).select("brand imageURL sizes name")
+  selectShoe.sizes=selectShoe.sizes[index]
+  res.status(200).json(selectShoe)
+}
+
+module.exports = { getAllproducts, getProductsByName,getProductInCart };

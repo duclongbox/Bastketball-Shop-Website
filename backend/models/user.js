@@ -5,7 +5,7 @@ const addItemSchema=new mongoose.Schema({
     index:{type:Number,required:true}
 })
 
-const favorItemSchema=new mongoose.Schema({
+const favorItemSchema=new mongoose.Schema({ 
     shoeID:{type:String,required:true},
     index:{type:Number,required:true}
 }) 
