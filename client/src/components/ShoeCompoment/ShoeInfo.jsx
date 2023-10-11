@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { useParams } from "react-router-dom";
-
+import { FiHeart } from "react-icons/fi";
 const ShoeInfo = (props) => {
   // get the specific shoe info
   const { shoeName } = useParams();
@@ -9,6 +9,8 @@ const ShoeInfo = (props) => {
   const [data, setData] = useState([]);
   const [index, setIndex] = useState(0);
   const [displayAdd,setDisplayAdd]=useState(false)
+  const [clickFollow,setClickFollow]=useState(false)
+  const [reminder,setReminder]=useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,8 +32,26 @@ const ShoeInfo = (props) => {
     fetchData();
   }, []);
 
-  console.log(data);
-  console.log(data._id);
+  
+
+  const handelClickHeart=()=>{
+    setClickFollow(true)
+    if (props.isLogIn) {
+      fetch("/api/v1/logIn/addCart",{
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({likeIndex:index,likeShoeID:data._id}),
+        withCredentials: true
+      }).then((response)=>response.json()).then((data)=>{
+        if (data.success===false) {
+          setReminder(true);
+        }
+      }).catch((error)=>console.log(error))
+    }
+  }
+
   const handelBuyButton=()=>{
 
     if (props.isLogIn) {
@@ -66,7 +86,13 @@ const ShoeInfo = (props) => {
     <div className="flex">
       <div className="m-8">
         <h1 className="font-bold">{data.name}</h1>
+        <div className="relative flex">
         <img src={data.imageURL} alt={data.name} className="h-80 w-auto " />
+        <button onClick={handelClickHeart} className={`absolute top-0 right-0 m-4 w-9 focus:outline-none ${clickFollow ? 'text-red-500' : 'text-gray-500'}`}><FiHeart/></button>
+        </div>
+        <div>
+          {reminder&&(<p className="font-bold m-4">You have already followed this item</p>)}
+        </div>
       </div>
 
       <div className=" p-8 ml-80  ">

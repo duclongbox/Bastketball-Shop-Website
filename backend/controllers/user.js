@@ -65,16 +65,50 @@ const addShoeToCart=async (req,res)=>{
   // get shoe info from req
   const userID=req.userID
   const body=req.body
-  const newItem={
-    shoeID:body.shoeID,
-    index:body.index
+  if (body.shoeID) {
+    const newItem={
+      shoeID:body.shoeID,
+      index:body.index
+    }
+    const updateInfo=await users.findOneAndUpdate(
+      {userID:userID},
+      { $push: { addedItem: newItem } },
+      { new: true }
+    )
+    return res.status(200).json({ success: true, message: "Shoe added to cart", user: updateInfo});
   }
-  const updateInfo=await users.findOneAndUpdate(
-    {userID:userID},
-    { $push: { addedItem: newItem } },
-    { new: true }
-  )
-  return res.status(200).json({ success: true, message: "Shoe added to cart", user: updateInfo});
+  else{
+    const shoeID=body.likeShoeID
+    const index=body.likeIndex
+    const newItem={
+      shoeID:shoeID,
+      index:index
+    }
+    const user=await users.findOne({userID:userID}).select("favorItem")
+    let flag=false;
+    // check if the favor item contain the new item
+    for (let index = 0; index < user.favorItem.length; index++) {
+      if (user.favorItem[index].shoeID===shoeID&&user.favorItem[index].index===index) {
+        flag=true
+        break
+      }
+    }
+
+    if (flag) {
+      return res.status(409).json({success:false,message:"You are following this shoe"})
+    }
+    else{
+      console.log(newItem);
+      console.log(userID);
+      await users.findOneAndUpdate(
+        {userID:userID},
+        { $push: { favorItem: newItem } },
+        { new: true }
+      )
+      return res.status(200).json({success:true,message:"Successfully follow this item"})
+    }
+  }
+  
 }
 
 const getCart=async (req,res)=>{
