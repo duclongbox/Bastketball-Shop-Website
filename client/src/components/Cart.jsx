@@ -48,7 +48,7 @@ const Cart = () => {
       <p>{userInfo}</p>
     </div>
       <div className="flex justify-between">
-        <div className="flex flex-col m-10 mx-36">
+        <div className="flex flex-col m-10 mx-32">
         <h2 className="font-bold">Following</h2>
         {favShoeInfo.length!==0?(favShoeInfo.map((element,index)=>{
             return(
@@ -64,7 +64,7 @@ const Cart = () => {
           })):(<div className="my-4">You haven't followed anything</div>)}         
           
         </div>
-        <div className="flex flex-col m-10 mx-36">
+        <div className="flex flex-col m-10 mx-32">
           <h2 className="font-bold">Buy history</h2>
           {buyShoeInfo.length!==0?(buyShoeInfo.map((element,index)=>{
             return(

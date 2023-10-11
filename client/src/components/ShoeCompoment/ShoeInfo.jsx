@@ -35,6 +35,7 @@ const ShoeInfo = (props) => {
   
 
   const handelClickHeart=()=>{
+    console.log(index);
     setClickFollow(true)
     if (props.isLogIn) {
       fetch("/api/v1/logIn/addCart",{
@@ -91,7 +92,7 @@ const ShoeInfo = (props) => {
         <button onClick={handelClickHeart} className={`absolute top-0 right-0 m-4 w-9 focus:outline-none ${clickFollow ? 'text-red-500' : 'text-gray-500'}`}><FiHeart/></button>
         </div>
         <div>
-          {reminder&&(<p className="font-bold m-4">You have already followed this item</p>)}
+          {clickFollow?(reminder?(<p className="font-bold m-4">You have already followed this item</p>):(<p className="font-bold m-4">Successfully added!</p>)):null}
         </div>
       </div>
 

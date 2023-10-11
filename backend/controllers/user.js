@@ -79,16 +79,16 @@ const addShoeToCart=async (req,res)=>{
   }
   else{
     const shoeID=body.likeShoeID
-    const index=body.likeIndex
+    const pindex=body.likeIndex
     const newItem={
       shoeID:shoeID,
-      index:index
+      index:pindex
     }
     const user=await users.findOne({userID:userID}).select("favorItem")
     let flag=false;
     // check if the favor item contain the new item
     for (let index = 0; index < user.favorItem.length; index++) {
-      if (user.favorItem[index].shoeID===shoeID&&user.favorItem[index].index===index) {
+      if (user.favorItem[index].shoeID===shoeID&&user.favorItem[index].index===pindex) {
         flag=true
         break
       }
