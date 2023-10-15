@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 const HeaderWithLog = ({updateState}) => {
+  const navigate=useNavigate();
   const [barVisible, setBarVisible] = useState(false);
   const [logOut, setLogOut] = useState(false);
   const onMouse = () => {
@@ -26,6 +28,7 @@ const HeaderWithLog = ({updateState}) => {
     setLogOut(false)
     setBarVisible(false)
     updateState(false)
+    navigate("/")
   }
 
   return (

@@ -121,8 +121,30 @@ const getCart=async (req,res)=>{
   else{
     res.status(404).json({success:false,message:"Unable to find this user"})
   }
-  
-  
 }
 
-module.exports = { createUser,getUserByLogIn,getUserByToken,logOut,addShoeToCart,getCart };
+
+const deleteHistory=async(req,res)=>{
+  const userID=req.userID
+  const index=req.body.index
+  // delete buy history
+  if (req.body.history) {
+    const deleteUser=await users.findOne({userID:userID}).select("addedItem")
+    await users.findOneAndUpdate(
+      {userID:userID},
+      {$pull:{addedItem:deleteUser.addedItem[index]}},
+      { new: true }
+    )
+  }
+  else{
+    const deleteUser=await users.findOne({userID:userID}).select("favorItem")
+    await users.findOneAndUpdate(
+      {userID:userID},
+      {$pull:{favorItem:deleteUser.favorItem[index]}},
+      { new: true }
+    )
+  }
+}
+
+
+module.exports = { createUser,getUserByLogIn,getUserByToken,logOut,addShoeToCart,getCart,deleteHistory };

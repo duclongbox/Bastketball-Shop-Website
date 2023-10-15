@@ -30,4 +30,5 @@ const getProductInCart=async(req,res)=>{
   res.status(200).json(selectShoe)
 }
 
+
 module.exports = { getAllproducts, getProductsByName,getProductInCart };
