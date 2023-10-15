@@ -5,7 +5,7 @@ const Cart = () => {
   const [userInfo, setUserInfo] = useState("");
   const [buyShoeInfo,setBuyShoeInfo]=useState([])
   const [favShoeInfo,setFavShoeInfo]=useState([])
-
+  const [loading,setLoading]=useState(false);
   // shoeArray = apiData.addedItem or apiData.favorItem
   const getShoeInfo=async(shoeArray)=>{
     let shoes=[]
@@ -34,6 +34,7 @@ const Cart = () => {
         // fetch the shoe info based on shoe id and the index of price size
         setBuyShoeInfo(await getShoeInfo(apiData.addedItem))
         setFavShoeInfo(await getShoeInfo(apiData.favorItem))
+        setLoading(true);
         setUserInfo(apiData.userID);
       } catch (error) {
         console.log(error);
@@ -41,6 +42,13 @@ const Cart = () => {
     };
     fetchData();
   }, []);
+
+  const handelDelete=(deleteH)=>{
+    if (deleteH) {
+      // delete history
+
+    }
+  }
   return (
     <div>
       <div className="flex flex-col items-center justify-center">
@@ -50,8 +58,10 @@ const Cart = () => {
       <div className="flex justify-between">
         <div className="flex flex-col m-10 mx-32">
         <h2 className="font-bold">Following</h2>
-        {favShoeInfo.length!==0?(favShoeInfo.map((element,index)=>{
+        
+      {loading?(favShoeInfo.length!==0?(favShoeInfo.map((element,index)=>{
             return(
+            <div>
             <div className="flex">
               <Link to={`../${element.name}`}><img src={element.imageURL} alt="shoe img" className="w-24 my-4" /></Link>
               <div className="m-4 flex flex-col">
@@ -60,14 +70,20 @@ const Cart = () => {
               <p>Size: {element.sizes[0].size}</p>
               <p>Price: {element.sizes[0].price}</p>
               </div>
+            </div>
+            <button onClick={handelDelete(false)} className="rounded-lg border-2 p-2 text-sm  hover:bg-gray-200 ">Delete</button>
             </div>)
-          })):(<div className="my-4">You haven't followed anything</div>)}         
+          })):(<div className="my-4">You haven't followed anything</div>)):(<div className="my-4">Loading: Sorry for the speed of fetching</div>)}
+
+
+                 
           
         </div>
         <div className="flex flex-col m-10 mx-32">
           <h2 className="font-bold">Buy history</h2>
-          {buyShoeInfo.length!==0?(buyShoeInfo.map((element,index)=>{
+          {loading?(buyShoeInfo.length!==0?(buyShoeInfo.map((element,index)=>{
             return(
+              <div>
             <div className="flex">
               <Link to={`../${element.name}`}><img src={element.imageURL} alt="shoe img" className="w-24 my-4" /></Link>
               <div className="m-4 flex flex-col">
@@ -76,8 +92,11 @@ const Cart = () => {
               <p>Size: {element.sizes[0].size}</p>
               <p>Price: {element.sizes[0].price}</p>
               </div>
+            </div>
+            <button onClick={handelDelete(true)} className="rounded-lg border-2 p-2 text-sm  hover:bg-gray-200 ">Delete</button>
             </div>)
-          })):(<>You haven't add anything</>)}
+          })):(<>You haven't add anything</>)):(<div className="my-4">Loading: Sorry for the speed of fetching</div>)}
+          
         </div>
       </div>
     </div>
