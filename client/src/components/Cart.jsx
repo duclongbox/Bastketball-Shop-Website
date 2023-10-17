@@ -8,6 +8,7 @@ const Cart = () => {
   const [favShoeInfo,setFavShoeInfo]=useState([])
   const [loading,setLoading]=useState(false);
   const [openModal,setOpenModal]=useState(false);
+  const [favorModal,setFavorModal]=useState(false)
   // shoeArray = apiData.addedItem or apiData.favorItem
   const getShoeInfo=async(shoeArray)=>{
     let shoes=[]
@@ -49,6 +50,10 @@ const Cart = () => {
     setOpenModal(set)
   }
 
+  const setFavorModal1=(set)=>{
+    setFavorModal(set)
+  }
+
   const handelDelete=(deleteH,index)=>{
       // delete history
       fetch("/api/v1/logIn/deleteH",{
@@ -83,11 +88,11 @@ const Cart = () => {
               <p>Price: {element.sizes[0].price}</p>
               </div>
             </div>
-            <button onClick={() =>setModalOpen(true)} className="rounded-lg border-2 p-2 text-sm  hover:bg-gray-200 ">Delete</button>
-            <Modal isOpen={openModal} className="bg-green-300">
+            <button onClick={() =>setFavorModal1(true)} className="rounded-lg border-2 p-2 text-sm  hover:bg-gray-200 ">Unfollow</button>
+            <Modal isOpen={favorModal} className="bg-green-300">
               <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center ">
                 <div className="fixed bg-gray-200 px-6 py-20 rounded">
-                <button onClick={() =>setModalOpen(false)} className="absolute right-0 top-0 w-4 ">x</button>
+                <button onClick={() =>setFavorModal1(false)} className="absolute right-0 top-0 w-4 ">x</button>
                 <p className="text-lg font-bold mb-4">
                           Do you want to unfollow this shoe?
                 </p>

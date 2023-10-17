@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const LogUp = () => {
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
     userID: '',
     password: ''
@@ -37,6 +39,7 @@ const LogUp = () => {
         }
       })
       .catch(error => console.error(error));
+      navigate('/signIn')
   };
 
 

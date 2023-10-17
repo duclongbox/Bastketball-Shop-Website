@@ -49,7 +49,7 @@ const HeaderWithLog = ({updateState}) => {
           <div className="p-10">
             <div>User</div>
             {barVisible && (
-              <div className="absolute right-1 mt-2 bg-white border border-gray-300 p-2 w-36 rounded-lg shadow-lg">
+              <div className="absolute right-1 mt-2 bg-white border border-gray-300 px-4 w-36 rounded-lg shadow-lg">
                 <ul>
                   <li className="hover:bg-gray-200 px-2 py-1 rounded">
                     <button onClick={clickLogOut}>Log out</button>
@@ -69,6 +69,11 @@ const HeaderWithLog = ({updateState}) => {
                   </li>
                   <li className="hover:bg-gray-200 px-2 py-1 rounded">
                     <Link to="/cart">Cart</Link>
+                  </li >
+                  <li className="hover:bg-gray-200 px-2 rounded">
+                    <button className="">
+                      Delete Account
+                    </button>
                   </li>
                 </ul>
               </div>
