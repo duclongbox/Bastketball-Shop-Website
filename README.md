@@ -27,9 +27,10 @@ React, Tailwind
      
 
 # Cart 
-![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/c9475f24-3ee0-47fe-969b-f74cf08c5f4d)
+![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/28fa223a-6728-4272-b36b-01004b2eb25b)
 ## Features
-  1. working on it
+  1. Follow shoe from shoe page
+  2. Using the modal to confirm the delete and unfollow of shoes in the cart.
 
 
 
