@@ -12,6 +12,7 @@ import LogIn from './components/logIn/LogIn';
 import HeaderWithLog from './components/HeaderWithLog';
 import SlogInPage from './components/logIn/SlogInPage';
 import Cart from './components/Cart';
+
 function App() {
   const [isLogIn,setisLogIn]=useState(false);
   useEffect(()=>{
@@ -43,7 +44,7 @@ function App() {
           <Route path="/singUp" element={<LogUp />} />
           <Route path="/signIn" element={<LogIn updateState={updateLogState} />} />
           <Route path="/sLogInPage" element={<SlogInPage />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart updateState={updateLogState}/>} />
         </Routes>
         </Router>
     </div>

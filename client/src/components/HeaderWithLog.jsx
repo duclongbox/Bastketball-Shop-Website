@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Modal from "react-modal";
+import HandelLogOut from "./utility/HandelLogOut";
 const HeaderWithLog = ({updateState}) => {
   const navigate=useNavigate();
   const [barVisible, setBarVisible] = useState(false);
+  const [openModal,setOpenModal]=useState(false)
   const [logOut, setLogOut] = useState(false);
   const onMouse = () => {
     setBarVisible(true);
@@ -14,18 +15,14 @@ const HeaderWithLog = ({updateState}) => {
   };
 
   const clickLogOut = () => {
-    setLogOut(true);
+    setOpenModal(true)
   };
 
-  const closeTag=()=>{
-    setLogOut(false)
+  const msetLogOut= (newState) => {
+    setLogOut(true)
   }
 
-
-
-  const truelyLogOut=()=>{
-    fetch("/api/v1/logIn/logOut")
-    setLogOut(false)
+  const trulyLogOut=()=>{
     setBarVisible(false)
     updateState(false)
     navigate("/")
@@ -53,19 +50,8 @@ const HeaderWithLog = ({updateState}) => {
                 <ul>
                   <li className="hover:bg-gray-200 px-2 py-1 rounded">
                     <button onClick={clickLogOut}>Log out</button>
-                    <Modal isOpen={logOut}  className="bg-green-800">
-                      <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center ">
-                        <div className="fixed bg-gray-200 px-6 py-20 rounded">
-                          <button onClick={closeTag} className="absolute right-0 top-0 w-4 ">x</button>
-                          <p className="text-lg font-bold mb-4">
-                          Do you want to log out?
-                          </p>
-                          <button onClick={truelyLogOut} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Log out
-                          </button>
-                        </div>
-                      </div>
-                    </Modal>
+                    {openModal && <HandelLogOut setLogOut={msetLogOut} />}
+                    {logOut&&trulyLogOut()}
                   </li>
                   <li className="hover:bg-gray-200 px-2 py-1 rounded">
                     <Link to="/cart">Cart</Link>
