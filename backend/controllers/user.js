@@ -53,7 +53,7 @@ const getUserByLogIn=async(req,res)=>{
 
 const getUserByToken =async(req,res)=> {
   const userID=req.userID;
-  const userInfo=await users.findOne({userID:userID}).select("userID")
+  const userInfo=await users.findOne({userID:userID}).select("userID name shoeSize email")
   return res.status(200).json({success:true,userInfo});
 }
 
@@ -146,5 +146,17 @@ const deleteHistory=async(req,res)=>{
   }
 }
 
+const editProfile=async(req,res)=>{
+  const userID=req.userID
+  const body=req.body
+  const editUser=await users.findOne({userID:userID}).select("name shoeSize email")
+  await users.findOneAndUpdate(
+    {userID:userID},
+    {name:body.name,shoeSize:body.shoeSize,email:body.email},
+    { new: true }
+  )
+  res.json({success:true})
+}
 
-module.exports = { createUser,getUserByLogIn,getUserByToken,logOut,addShoeToCart,getCart,deleteHistory };
+
+module.exports = { createUser,getUserByLogIn,getUserByToken,logOut,addShoeToCart,getCart,deleteHistory,editProfile };

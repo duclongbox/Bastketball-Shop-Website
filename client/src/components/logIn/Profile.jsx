@@ -8,9 +8,9 @@ const Profile = ({updateState}) => {
         const fetchData = async () => {
           try {
             let apiData;
-            const response = await fetch("/api/v1/logIn/getCart");
+            const response = await fetch("/api/v1/logIn/token");
             apiData = await response.json();
-            setUserInfo(apiData);
+            setUserInfo(apiData.userInfo)
           } catch (error) {
             console.log(error);
           }
@@ -18,6 +18,8 @@ const Profile = ({updateState}) => {
         fetchData();
       }, []);
   return (
+    <div>
+      <div className="border-t border-gray-300 w-full"></div>
     <div className="h-screen flex">
       <div className="bg-gray-50">
         <LeftColumn
@@ -26,11 +28,12 @@ const Profile = ({updateState}) => {
         ></LeftColumn>
         
       </div>
-        <div className="ml-40 w-2/3">
+        <div className="ml-40 w-2/3 m-10">
         <div className="flex items-center justify-between">
         <p className="font-bold text-xl">Profile</p>     
         <Link to="/profile/edit" className="ml-auto px-3 py-0.5 outline text-white   bg-gray-700 hover:bg-black ">Edit</Link>
         </div>
+        <div className="border-t border-gray-300 w-full m-3"></div>
         <div className="p-3 my-8 flex items-center justify-between">
             <div>
             <p className="font-bold">Name</p>
@@ -48,6 +51,7 @@ const Profile = ({updateState}) => {
             <Link to="/" className="outline px-3 py-2 text-white  bg-gray-700 hover:bg-black">Reset Password</Link>
         
         </div>
+    </div>
     </div>
   )
 }

@@ -18,7 +18,10 @@ const Security = ({ updateState }) => {
     fetchData();
   }, []);
   return (
+    <div>
+    <div className="border-t border-gray-300 w-full"></div>
     <div className="h-screen flex">
+      <div className="border-t border-gray-500 my-4"></div>
       <div className="bg-gray-50">
         <LeftColumn
           userName={userInfo.userID}
@@ -58,6 +61,7 @@ const Security = ({ updateState }) => {
           </ol>
         </div>
       </div>
+    </div>
     </div>
   );
 };

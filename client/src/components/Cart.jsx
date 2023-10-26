@@ -70,7 +70,10 @@ const Cart = ({updateState}) => {
     window.location.reload();
   };
   return (
+    <div>
+    <div className="border-t border-gray-300 w-full"></div>
     <div className="h-screen flex">
+      
       <div className="bg-gray-50">
         <LeftColumn userName={userInfo} updateState={updateState}></LeftColumn>
       </div>
@@ -197,6 +200,7 @@ const Cart = ({updateState}) => {
         </div>
       </div>
       </div>
+    </div>
     </div>
   );
 };

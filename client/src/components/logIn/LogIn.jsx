@@ -31,7 +31,6 @@ const LogIn = ({updateState}) => {
       .then((data) => {
         if (data.success) {
           updateState();
-          console.log(data);
           navigate("/sLogInPage")
         }
       })
