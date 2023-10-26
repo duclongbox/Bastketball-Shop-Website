@@ -30,7 +30,7 @@ const LogIn = ({updateState}) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          updateState(true);
+          updateState();
           console.log(data);
           navigate("/sLogInPage")
         }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
-import LeftColumn from "./LeftColumn";
+import LeftColumn from "./utility/LeftColumn";
 const Cart = ({updateState}) => {
   const [userInfo, setUserInfo] = useState("");
   const [buyShoeInfo, setBuyShoeInfo] = useState([]);

@@ -24,7 +24,7 @@ const HeaderWithLog = ({updateState}) => {
 
   const trulyLogOut=()=>{
     setBarVisible(false)
-    updateState(false)
+    updateState()
     navigate("/")
   }
 

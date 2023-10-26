@@ -12,7 +12,9 @@ import LogIn from './components/logIn/LogIn';
 import HeaderWithLog from './components/HeaderWithLog';
 import SlogInPage from './components/logIn/SlogInPage';
 import Cart from './components/Cart';
-
+import Security from './components/logIn/Security';
+import Profile from './components/logIn/Profile';
+import ProfileEdit from './components/logIn/ProfileEdit';
 function App() {
   const [isLogIn,setisLogIn]=useState(false);
   useEffect(()=>{
@@ -28,8 +30,12 @@ function App() {
     }
     fetchData()
   },[])
-  const updateLogState=(newState)=>{
-    setisLogIn(newState);
+  const updateLogState=()=>{
+    setisLogIn(false);
+  }
+
+  const setTrueLogState=()=>{
+    setisLogIn(true)
   }
   return (
     <div>
@@ -42,9 +48,12 @@ function App() {
           <Route path="/jordan" element={<JordanComponent />} />
           <Route path="/adidas" element={<AdidasComponent />} />
           <Route path="/singUp" element={<LogUp />} />
-          <Route path="/signIn" element={<LogIn updateState={updateLogState} />} />
+          <Route path="/signIn" element={<LogIn updateState={setTrueLogState} />} />
           <Route path="/sLogInPage" element={<SlogInPage />} />
           <Route path="/cart" element={<Cart updateState={updateLogState}/>} />
+          <Route path="/security" element={  <Security updateState={updateLogState} />} />
+          <Route path="/profile" element={  <Profile updateState={updateLogState} />} />
+          <Route path="/profile/edit" element={  <ProfileEdit/>} />
         </Routes>
         </Router>
     </div>

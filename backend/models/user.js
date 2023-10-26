@@ -13,6 +13,9 @@ const favorItemSchema=new mongoose.Schema({
 const userSchema =new mongoose.Schema({
     userID:{type:String,required:true},
     password:{type:String,require:true},
+    name:{type:String},
+    shoeSize:{type:String},
+    email:{type:String},
     addedItem:[addItemSchema],
     favorItem:[favorItemSchema]
 })

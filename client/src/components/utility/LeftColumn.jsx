@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
-import HandelLogOut from './utility/HandelLogOut';
+import HandelLogOut from './HandelLogOut';
 import { useNavigate } from "react-router-dom";
 const LeftColumn = ({userName,updateState}) => {
     const navigate=useNavigate();
@@ -19,7 +19,7 @@ const LeftColumn = ({userName,updateState}) => {
         )
     }
     const trulyLogOut=()=>{
-        updateState(false)
+        updateState()
         navigate("/")
     }
   return (
@@ -27,7 +27,7 @@ const LeftColumn = ({userName,updateState}) => {
       <p className='font-bold text-xl px-2'>{userName}</p>
       <ul>
         <li>
-            <Link to="/">
+            <Link to="/security">
             <button className='py-4 hover:bg-gray-100'>
             <p className='font-bold'>Security</p>
             <p className='text-gray-600 text-xs w-36'>Two-step verification</p>
@@ -43,10 +43,12 @@ const LeftColumn = ({userName,updateState}) => {
             </Link>
         </li>
         <li >
+          <Link to="/profile">
         <button className='py-4 hover:bg-gray-100'>
             <p className='font-bold'>Profile</p>
             <p className='text-gray-600 text-xs w-36'>Learn what is unique to you</p>
             </button>
+            </Link>
         </li>
         <li>
         <button className='py-4 px-10 hover:bg-gray-100' onClick={clickLogOut}>
