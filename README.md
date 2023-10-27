@@ -31,7 +31,7 @@ React, Tailwind
 
 # Cart 
 ![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/d3599616-d1e6-4ea0-9029-e445c1e9f229)
-![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/51847ab8-b2e3-45a8-bafb-6f8cc6061f62)
+![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/483a594e-be11-4f4a-9151-21a654f7647a)
 
 ## Features
   1. implement a cart for users to check their buying history and following items
