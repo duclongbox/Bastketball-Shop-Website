@@ -158,5 +158,11 @@ const editProfile=async(req,res)=>{
   res.json({success:true})
 }
 
+const deleteAccount=async(req,res)=>{
+  const userID=req.userID
+  await users.findOneAndDelete({userID:userID})
+  res.json({success:true})
+}
 
-module.exports = { createUser,getUserByLogIn,getUserByToken,logOut,addShoeToCart,getCart,deleteHistory,editProfile };
+
+module.exports = { createUser,getUserByLogIn,getUserByToken,logOut,addShoeToCart,getCart,deleteHistory,editProfile, deleteAccount};
