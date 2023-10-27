@@ -18,6 +18,9 @@ React, Tailwind
 ![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/4dbe7a64-d0a4-4db2-9c8f-6b5e9b067167)
 ![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/f20b1cb8-d27e-4145-8b67-9388fcba41b5)
 ![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/9a391414-0176-4178-8131-089b7919ab70)
+## Delete Account
+![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/166e37d6-3df1-47f5-a98b-c89a9848f8f7)
+![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/7c1919fa-c067-4b70-af7e-2b2d86a9d77a)
 
 ## Features
 1. generate hash passwords and store them in db when users sign up
@@ -28,7 +31,7 @@ React, Tailwind
 
 # Cart 
 ![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/d3599616-d1e6-4ea0-9029-e445c1e9f229)
-![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/51847ab8-b2e3-45a8-bafb-6f8cc6061f62)
+![image](https://github.com/duclongbox/Bastketball-Shop-Website/assets/127691823/483a594e-be11-4f4a-9151-21a654f7647a)
 
 ## Features
   1. implement a cart for users to check their buying history and following items
