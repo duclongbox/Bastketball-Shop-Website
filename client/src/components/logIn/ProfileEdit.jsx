@@ -85,11 +85,11 @@ const ProfileEdit = () => {
                 className="w-full border rounded-sm  bg-gray-100 border-gray-700 focus:outline-none focus:border-blue-500"
               >
                 <option value="">Default Size</option>
-                <option value="5">3.5</option>
-                <option value="6">4</option>
-                <option value="7">4.5</option>
-                <option value="8">5</option>
-                <option value="9">5.5</option>
+                <option value="3.5">3.5</option>
+                <option value="4">4</option>
+                <option value="4.5">4.5</option>
+                <option value="5">5</option>
+                <option value="5.5">5.5</option>
               </select>
             </div>
           </div>
