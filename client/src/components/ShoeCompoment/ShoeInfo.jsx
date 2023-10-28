@@ -8,6 +8,7 @@ const ShoeInfo = (props) => {
   // get the information based on this shoe
   const [data, setData] = useState([]);
   const [index, setIndex] = useState(0);
+  const [cheapest, setCheapest] = useState(0);
   const [displayAdd, setDisplayAdd] = useState(false);
   const [clickFollow, setClickFollow] = useState(false);
   const [reminder, setReminder] = useState(false);
@@ -24,6 +25,7 @@ const ShoeInfo = (props) => {
           if (price > apiData.sizes[index].price) {
             price = apiData.sizes[index].price;
             setIndex(index);
+            setCheapest(price);
           }
         }
       } catch (error) {
@@ -80,13 +82,14 @@ const ShoeInfo = (props) => {
   };
 
   const handelClickShoe = (index) => {
-    setisOnlyBid(false)
+    setisOnlyBid(false);
     setIndex(index);
     handelOpen();
   };
 
-  const onlyBid = () => {
+  const onlyBid = (index) => {
     setisOnlyBid(true);
+    setIndex(index);
     handelOpen();
   };
 
@@ -118,46 +121,77 @@ const ShoeInfo = (props) => {
         </div>
       </div>
 
-      <div className="relative p-6 ml-6 rounded ring-1 ring-gray-800 ring-opacity-30 w-1/4 h-60">
+      <div className="relative p-6 ml-6 rounded ring-1 ring-gray-800 ring-opacity-30 w-[450px] h-60">
         <div className="relative">
-        <button
-          onClick={() => handelOpen()}
-          className="px-2  w-full py-1 rounded flex justify-between ring-1 ring-gray-800 ring-opacity-50 "
-        >
-          <span className="mr-2">Size:</span>
-          
-          {data.sizes && data.sizes.length > 0 && (
-            <div>US: {data.sizes[index].size}</div>
-          )}
-        </button>
-        {open ? (
-           <div className="absolute  h-screen top-full left-0 w-full bg-white border border-gray-300">
-          <ul className="px-7 flex flex-wrap py-2 h-full overflow-y-auto no-scrollbar">
-            {data.sizes.map((item, index) => (
-              <li key={item._id} className="w-1/3 px-2 mb-2">
-           
-                {(item.stock > 0) ? (
+          <button
+            onClick={() => handelOpen()}
+            className="px-2 w-full py-1 rounded flex justify-between ring-1 ring-gray-800 ring-opacity-50 "
+          >
+            <span className="m-1 ">Size:</span>
 
-                  <button
-                    onClick={() => handelClickShoe(index)}
-                    className={`px-7 py-2  `}
-                  >
-                    Size: {item.size} Price: {item.price}
+            {data.sizes && data.sizes.length > 0 && (
+              <div className="m-1">US: {data.sizes[index].size}</div>
+            )}
+          </button>
+          {open ? (
+            <div className="absolute  h-[400px] top-full  w-full bg-white border border-gray-300">
+              <div className="h-full overflow-y-auto no-scrollbar">
+                <p className="text-[10px] font-bold m-1">
+                  Size and Conversions
+                </p>
+                <div className="flex justify-between w-auto m-2">
+                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                    US M
                   </button>
-
-                ) : (
-
-                  <button className={`px-7 py-2 `} onClick={onlyBid}>
-                    Size: {item.size} Bid
+                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                    US W
                   </button>
+                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                    UK
+                  </button>
+                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                    CM
+                  </button>
+                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                    KR
+                  </button>
+                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                    EU
+                  </button>
+                </div>
 
-                )}
-              </li>
-            ))}
-          </ul>
+                <div className="w-auto rounded-[1px] p-1 ring-1 ring-gray-800 ring-opacity-50 m-3 grid justify-center">
+                  <button>
+                    All <p>${cheapest}</p>
+                  </button>
+                </div>
 
-          </div>
-        ) : null}</div>
+                <ul className="flex flex-wrap my-2 justify-between">
+                  {data.sizes.map((item, index) => (
+                    <div key={item._id} className="w-1/3">
+                      {item.stock > 0 ? (
+                        <button
+                          onClick={() => handelClickShoe(index)}
+                          className={` text-sm rounded-[1px]  ring-1 ring-gray-800 ring-opacity-50 px-3 m-4 w-[100px] h-[50px] hover:bg-gray-100`}
+                        >
+                          US M: {item.size}{" "}
+                          <p className="text-green-800">${item.price}</p>
+                        </button>
+                      ) : (
+                        <button
+                          className={` text-sm  rounded-[1px] ring-1 ring-gray-800 ring-opacity-50 px-3 m-4 w-[100px] h-[50px] hover:bg-gray-100`}
+                          onClick={() => onlyBid(index)}
+                        >
+                          US M: {item.size} <p>Bid</p>
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : null}
+        </div>
 
         {!open ? (
           !isOnlyBid ? (
@@ -180,6 +214,8 @@ const ShoeInfo = (props) => {
             </button>
           )
         ) : null}
+           <div className="border-t border-gray-300 w-full"></div>
+           <button className="m-6 mx-1 text-green-800 w-full">Sell for $71 or Ask for More</button>
 
         {displayAdd ? (
           props.isLogIn ? (
