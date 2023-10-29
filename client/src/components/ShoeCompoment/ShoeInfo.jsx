@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
+import RowPagination from "../utility/RowPagination";
+import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 const ShoeInfo = (props) => {
   // get the specific shoe info
   const { shoeName } = useParams();
@@ -38,7 +40,7 @@ const ShoeInfo = (props) => {
       }
     };
     fetchData();
-  }, []);
+  }, [shoeName]);
   console.log(relateShoe);
 
   const name = data?.name?.split("-")[0] ?? 'Default Name';
@@ -104,7 +106,8 @@ const ShoeInfo = (props) => {
 
 
   return (
-    <div className="flex-col items-center justify-center w-3/4 mx-auto">
+    
+    <div className="flex-col items-center justify-center w-4/5 mx-auto">
     <div className="flex items-center  justify-center ">
       <div className="m-6">
         <h1 className="font-bold">{name}</h1>
@@ -243,7 +246,7 @@ const ShoeInfo = (props) => {
     <div className="border-t border-gray-300 w-auto m-2"></div>
     <p className="my-1 font-bold">Related Products</p>
     <div>
-
+      {relateShoe.length!==0&&<RowPagination shoeArr={relateShoe}/>}
     </div>
     </div>
   );
