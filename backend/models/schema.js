@@ -16,6 +16,7 @@ const shoeSchema=new mongoose.Schema({
         type:String,
         required:[true,'must provide a brand']
     },
+    category:{ type:String},
     sizes: [sizePriceSchema],
     imageURL:{
         type:String,

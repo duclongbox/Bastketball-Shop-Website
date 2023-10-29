@@ -15,7 +15,7 @@ function Items({ currentItems }) {
                 alt={item.name}
                 className="h-40 w-auto max-w-30"
               />
-              <p>Name: {item.name}</p>
+              <p className="w-[100px]">{item.name.replace(/-/g," ")}</p>
               <p>Brand: {item.brand}</p>
             </Link>
           </div>

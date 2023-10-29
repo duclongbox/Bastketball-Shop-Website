@@ -20,7 +20,15 @@ const getProductsByName = async (req, res) => {
   query.size = size;
   selectShoe = await shoes.find(query).select("_id brand name sizes imageURL");
   return res.status(200).json(selectShoe[0]);
-};
+}
+
+const getRelateProduct=async(req,res)=>{
+  let {name}=req.params
+  name=name.split("-")[0]
+  const searchItem=/^nike1-/i
+  const selectShoe=await shoes.find({name:{$regex:searchItem}}).select("name imageURL")
+  return res.status(200).json(selectShoe)
+}
 
 const getProductInCart=async(req,res)=>{
   const {id}=req.params
@@ -31,4 +39,4 @@ const getProductInCart=async(req,res)=>{
 }
 
 
-module.exports = { getAllproducts, getProductsByName,getProductInCart };
+module.exports = { getAllproducts, getProductsByName,getProductInCart,getRelateProduct };

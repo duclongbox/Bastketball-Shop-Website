@@ -1,7 +1,7 @@
 [
     {
         "brand":"nike",
-        "name":"nike1",
+        "name":"nike1-Korn",
         "sizes": [
             {
               "size": 3.5,
@@ -95,7 +95,7 @@
     },
     {
         "brand":"nike",
-        "name":"nike2",
+        "name":"nike1-Collegiate-Green",
         "sizes": [
             {
               "size": 7,
@@ -117,7 +117,7 @@
     },
     {
         "brand":"nike",
-        "name":"nike3",
+        "name":"nike1-Energy-Ink",
         "sizes": [
             {
               "size": 7,
@@ -139,7 +139,7 @@
     },
     {
         "brand":"nike",
-        "name":"nike4",
+        "name":"nike1-Ambient-Sky",
         "sizes": [
             {
               "size": 7,
@@ -162,7 +162,7 @@
     },
     {
         "brand":"nike",
-        "name":"nike5",
+        "name":"nike1-Lucid-Blue",
         "sizes": [
             {
               "size": 7,
@@ -184,7 +184,7 @@
     },
     {
         "brand":"nike",
-        "name":"nike6",
+        "name":"nike1-Pebble-Core-Black",
         "sizes": [
             {
               "size": 7,
@@ -206,7 +206,7 @@
     },
     {
         "brand":"nike",
-        "name":"nike7",
+        "name":"nike1-Aluminum-Core-Black",
         "sizes": [
             {
               "size": 7,
@@ -228,7 +228,7 @@
     },
     {
         "brand":"nike",
-        "name":"nike8",
+        "name":"nike1-Footwear-White-Core",
         "sizes": [
             {
               "size": 7,
@@ -249,7 +249,7 @@
     },
     {
         "brand":"nike",
-        "name":"nike9",
+        "name":"nike1-Green-Cloud-White",
         "sizes": [
             {
               "size": 7,
@@ -271,7 +271,7 @@
     },
     {
         "brand":"nike",
-        "name":"nike10",
+        "name":"nike1-Carbon-Black",
         "sizes": [
             {
               "size": 7,

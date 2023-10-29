@@ -13,30 +13,38 @@ const ShoeInfo = (props) => {
   const [clickFollow, setClickFollow] = useState(false);
   const [reminder, setReminder] = useState(false);
   const [isOnlyBid, setisOnlyBid] = useState(false);
+  const [relateShoe,setRelateShoe]=useState([])
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`api/v1/name/${shoeName}`);
-        const apiData = await response.json();
-        setData(apiData);
+        const response1 = await fetch(`api/v1/name/${shoeName}`);
+        const apiData1 = await response1.json();
+        setData(apiData1);
         // get the cheapest size with price
         let price = 999999;
-        for (let index = 0; index < apiData.sizes.length; index++) {
-          if (price > apiData.sizes[index].price) {
-            price = apiData.sizes[index].price;
+        for (let index = 0; index < apiData1.sizes.length; index++) {
+          if (price > apiData1.sizes[index].price) {
+            price = apiData1.sizes[index].price;
             setIndex(index);
             setCheapest(price);
           }
         }
+        // get the related shoe 
+        const response2=await fetch(`api/v1/relate/${shoeName}`)
+        const apiData2=await response2.json();
+        setRelateShoe(apiData2)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
   }, []);
+  console.log(relateShoe);
 
+  const name = data?.name?.split("-")[0] ?? 'Default Name';
+  const category=data?.name?.split("-").slice(1).join("-").trim().split("-").join(" ")??'Default Name';
+  
   const handelClickHeart = () => {
-    console.log(index);
     setClickFollow(true);
     if (props.isLogIn) {
       fetch("/api/v1/logIn/addCart", {
@@ -52,6 +60,7 @@ const ShoeInfo = (props) => {
           if (data.success === false) {
             setReminder(true);
           }
+          else setReminder(false)
         })
         .catch((error) => console.log(error));
     }
@@ -93,10 +102,13 @@ const ShoeInfo = (props) => {
     handelOpen();
   };
 
+
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex-col items-center justify-center w-3/4 mx-auto">
+    <div className="flex items-center  justify-center ">
       <div className="m-6">
-        <h1 className="font-bold">{data.name}</h1>
+        <h1 className="font-bold">{name}</h1>
+        <p className="text-sm">{category}</p>
         <div className="relative flex">
           <img src={data.imageURL} alt={data.name} className="h-80 w-auto " />
           <button
@@ -121,7 +133,7 @@ const ShoeInfo = (props) => {
         </div>
       </div>
 
-      <div className="relative p-6 ml-6 rounded ring-1 ring-gray-800 ring-opacity-30 w-[450px] h-60">
+      <div className="relative p-6 ml-6 rounded ring-1 ring-gray-800 ring-opacity-30 w-[450px] h-auto">
         <div className="relative">
           <button
             onClick={() => handelOpen()}
@@ -227,6 +239,12 @@ const ShoeInfo = (props) => {
           )
         ) : null}
       </div>
+    </div>
+    <div className="border-t border-gray-300 w-auto m-2"></div>
+    <p className="my-1 font-bold">Related Products</p>
+    <div>
+
+    </div>
     </div>
   );
 };
