@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import React from "react";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
@@ -27,11 +28,13 @@ function Items({ currentItems }) {
 const NikeComponent = () => {
   // initialize the current state, fetch data from express
   const [data, setData] = useState([]);
-
+  const {brand} = useParams();
   useEffect(() => {
+    
     const fetchData = async () => {
+      
       try {
-        const response = await fetch("api/v1/brand/nike");
+        const response = await fetch(`api/v1/brand/${brand}`);
         const apiData = await response.json();
         setData(apiData);
       } catch (error) {

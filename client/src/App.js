@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 import Header from "./components/Header";
 import Brands from "./components/Brands.jsx";
 import NikeComponent from './components/ShoeCompoment/NikeComponent';
-import JordanComponent from './components/ShoeCompoment/JordanComponent';
-import AdidasComponent from './components/ShoeCompoment/AdidasComponent';
 import ShoeInfo from './components/ShoeCompoment/ShoeInfo';
 import LogUp from './components/logIn/LogUp';
 import LogIn from './components/logIn/LogIn';
@@ -44,10 +42,8 @@ function App() {
         {!isLogIn?(<Header />):(<HeaderWithLog updateState={updateLogState} />)}
       <Routes>
           <Route path="/" element={  <Brands />} />
-          <Route path="/nike" element={<NikeComponent />} />
+          <Route path="/:brand" element={<NikeComponent />} />
           <Route path=":shoeName" element={<ShoeInfo isLogIn={isLogIn} />} />
-          <Route path="/jordan" element={<JordanComponent />} />
-          <Route path="/adidas" element={<AdidasComponent />} />
           <Route path="/singUp" element={<LogUp />} />
           <Route path="/signIn" element={<LogIn updateState={setTrueLogState} />} />
           <Route path="/sLogInPage" element={<SlogInPage />} />

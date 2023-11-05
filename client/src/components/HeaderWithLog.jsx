@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "./utility/SearchBar";
 import HandelLogOut from "./utility/HandelLogOut";
 const HeaderWithLog = ({updateState}) => {
   const navigate=useNavigate();
@@ -37,7 +38,7 @@ const HeaderWithLog = ({updateState}) => {
         >
           Shoe Shop
         </Link>
-
+        <SearchBar />
         <div
           onMouseEnter={onMouse}
           onMouseLeave={mouseLeave}

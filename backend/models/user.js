@@ -17,7 +17,8 @@ const userSchema =new mongoose.Schema({
     shoeSize:{type:String},
     email:{type:String},
     addedItem:[addItemSchema],
-    favorItem:[favorItemSchema]
+    favorItem:[favorItemSchema],
+    recentView:{type:Array}
 })
 
 module.exports=mongoose.model('user',userSchema)

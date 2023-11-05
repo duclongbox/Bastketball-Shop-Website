@@ -3,7 +3,6 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
 import RowPagination from "../utility/RowPagination";
-import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 const ShoeInfo = (props) => {
   // get the specific shoe info
   const { shoeName } = useParams();
@@ -15,7 +14,7 @@ const ShoeInfo = (props) => {
   const [clickFollow, setClickFollow] = useState(false);
   const [reminder, setReminder] = useState(false);
   const [isOnlyBid, setisOnlyBid] = useState(false);
-  const [relateShoe,setRelateShoe]=useState([])
+  const [relateShoe, setRelateShoe] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,21 +30,27 @@ const ShoeInfo = (props) => {
             setCheapest(price);
           }
         }
-        // get the related shoe 
-        const response2=await fetch(`api/v1/relate/${shoeName}`)
-        const apiData2=await response2.json();
-        setRelateShoe(apiData2)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
   }, [shoeName]);
-  console.log(relateShoe);
 
-  const name = data?.name?.split("-")[0] ?? 'Default Name';
-  const category=data?.name?.split("-").slice(1).join("-").trim().split("-").join(" ")??'Default Name';
-  
+  useEffect(() => {
+    const fetchData = async () => {
+    const response2 = await fetch(`api/v1/relate/${shoeName}`);
+    const apiData2 = await response2.json();
+    setRelateShoe(apiData2);
+    }
+    fetchData()
+  });
+
+  const name = data?.name?.split("-")[0] ?? "Default Name";
+  const category =
+    data?.name?.split("-").slice(1).join("-").trim().split("-").join(" ") ??
+    "Default Name";
+
   const handelClickHeart = () => {
     setClickFollow(true);
     if (props.isLogIn) {
@@ -61,8 +66,7 @@ const ShoeInfo = (props) => {
         .then((data) => {
           if (data.success === false) {
             setReminder(true);
-          }
-          else setReminder(false)
+          } else setReminder(false);
         })
         .catch((error) => console.log(error));
     }
@@ -86,7 +90,6 @@ const ShoeInfo = (props) => {
     setDisplayAdd(true);
   };
 
-  // // handel the select bar
   const [open, setOpen] = useState(false);
   const handelOpen = () => {
     setOpen(!open);
@@ -104,150 +107,156 @@ const ShoeInfo = (props) => {
     handelOpen();
   };
 
-
   return (
-    
     <div className="flex-col items-center justify-center w-4/5 mx-auto">
-    <div className="flex items-center  justify-center ">
-      <div className="m-6">
-        <h1 className="font-bold">{name}</h1>
-        <p className="text-sm">{category}</p>
-        <div className="relative flex">
-          <img src={data.imageURL} alt={data.name} className="h-80 w-auto " />
-          <button
-            onClick={handelClickHeart}
-            className={`absolute top-0 right-0 m-4 w-9 focus:outline-none ${
-              clickFollow ? "text-red-500" : "text-gray-500"
-            }`}
-          >
-            <FiHeart />
-          </button>
+      <div className="flex items-center  justify-center ">
+        <div className="m-6">
+          <h1 className="font-bold">{name}</h1>
+          <p className="text-sm">{category}</p>
+          <div className="relative flex">
+            <img src={data.imageURL} alt={data.name} className="h-80 w-auto " />
+            <button
+              onClick={handelClickHeart}
+              className={`absolute top-0 right-0 m-4 w-9 focus:outline-none ${
+                clickFollow ? "text-red-500" : "text-gray-500"
+              }`}
+            >
+              <FiHeart />
+            </button>
+          </div>
+          <div>
+            {clickFollow ? (
+              reminder ? (
+                <p className="font-bold m-4">
+                  You have already followed this item
+                </p>
+              ) : (
+                <p className="font-bold m-4">Successfully added!</p>
+              )
+            ) : null}
+          </div>
         </div>
-        <div>
-          {clickFollow ? (
-            reminder ? (
-              <p className="font-bold m-4">
-                You have already followed this item
+
+        <div className="relative p-6 ml-6 rounded ring-1 ring-gray-800 ring-opacity-30 w-[450px] h-auto">
+          <div className="relative">
+            <button
+              onClick={() => handelOpen()}
+              className="px-2 w-full py-1 rounded flex justify-between ring-1 ring-gray-800 ring-opacity-50 "
+            >
+              <span className="m-1 ">Size:</span>
+
+              {data.sizes && data.sizes.length > 0 && (
+                <div className="m-1">US: {data.sizes[index].size}</div>
+              )}
+            </button>
+            {open ? (
+              <div className="absolute  h-[400px] top-full  w-full bg-white border border-gray-300">
+                <div className="h-full overflow-y-auto no-scrollbar">
+                  <p className="text-[10px] font-bold m-1">
+                    Size and Conversions
+                  </p>
+                  <div className="flex justify-between w-auto m-2">
+                    <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                      US M
+                    </button>
+                    <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                      US W
+                    </button>
+                    <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                      UK
+                    </button>
+                    <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                      CM
+                    </button>
+                    <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                      KR
+                    </button>
+                    <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
+                      EU
+                    </button>
+                  </div>
+
+                  <div className="w-auto rounded-[1px] p-1 ring-1 ring-gray-800 ring-opacity-50 m-3 grid justify-center">
+                    <button>
+                      All <p>${cheapest}</p>
+                    </button>
+                  </div>
+
+                  <ul className="flex flex-wrap my-2 justify-between">
+                    {data.sizes.map((item, index) => (
+                      <div key={item._id} className="w-1/3">
+                        {item.stock > 0 ? (
+                          <button
+                            onClick={() => handelClickShoe(index)}
+                            className={` text-sm rounded-[1px]  ring-1 ring-gray-800 ring-opacity-50 px-3 m-4 w-[100px] h-[50px] hover:bg-gray-100`}
+                          >
+                            US M: {item.size}{" "}
+                            <p className="text-green-800">${item.price}</p>
+                          </button>
+                        ) : (
+                          <button
+                            className={` text-sm  rounded-[1px] ring-1 ring-gray-800 ring-opacity-50 px-3 m-4 w-[100px] h-[50px] hover:bg-gray-100`}
+                            onClick={() => onlyBid(index)}
+                          >
+                            US M: {item.size} <p>Bid</p>
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ) : null}
+          </div>
+
+          {!open ? (
+            !isOnlyBid ? (
+              data.sizes ? (
+                <div className="flex ">
+                  <button className=" x-7 py-2 m-6 p-3 bg-gray-300 hover:bg-gray-400">
+                    Place Bid
+                  </button>
+                  <button
+                    onClick={handelBuyButton}
+                    className=" bg-green-800 text-white hover:bg-green-900 px-7 py-2 m-6"
+                  >
+                    Buy CA$ {data.sizes[index].price}
+                  </button>
+                </div>
+              ) : null
+            ) : (
+              <button className="rounded x-7 py-2 m-6 p-3 w-2/3 bg-gray-300 hover:bg-gray-400">
+                Place Bid
+              </button>
+            )
+          ) : null}
+          <div className="border-t border-gray-300 w-full"></div>
+          <button className="m-6 mx-1 text-green-800 w-full">
+            Sell for $71 or Ask for More
+          </button>
+
+          {displayAdd ? (
+            props.isLogIn ? (
+              <p className="font-bold">
+                Shoe {data.name} has been added into your cart
               </p>
             ) : (
-              <p className="font-bold m-4">Successfully added!</p>
+              <p className="font-bold">Please Log In first</p>
             )
           ) : null}
         </div>
       </div>
-
-      <div className="relative p-6 ml-6 rounded ring-1 ring-gray-800 ring-opacity-30 w-[450px] h-auto">
-        <div className="relative">
-          <button
-            onClick={() => handelOpen()}
-            className="px-2 w-full py-1 rounded flex justify-between ring-1 ring-gray-800 ring-opacity-50 "
-          >
-            <span className="m-1 ">Size:</span>
-
-            {data.sizes && data.sizes.length > 0 && (
-              <div className="m-1">US: {data.sizes[index].size}</div>
-            )}
-          </button>
-          {open ? (
-            <div className="absolute  h-[400px] top-full  w-full bg-white border border-gray-300">
-              <div className="h-full overflow-y-auto no-scrollbar">
-                <p className="text-[10px] font-bold m-1">
-                  Size and Conversions
-                </p>
-                <div className="flex justify-between w-auto m-2">
-                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
-                    US M
-                  </button>
-                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
-                    US W
-                  </button>
-                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
-                    UK
-                  </button>
-                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
-                    CM
-                  </button>
-                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
-                    KR
-                  </button>
-                  <button className="px-2 m-1 bg-gray-200 rounded-full ring-1 ring-gray-800 ring-opacity-50">
-                    EU
-                  </button>
-                </div>
-
-                <div className="w-auto rounded-[1px] p-1 ring-1 ring-gray-800 ring-opacity-50 m-3 grid justify-center">
-                  <button>
-                    All <p>${cheapest}</p>
-                  </button>
-                </div>
-
-                <ul className="flex flex-wrap my-2 justify-between">
-                  {data.sizes.map((item, index) => (
-                    <div key={item._id} className="w-1/3">
-                      {item.stock > 0 ? (
-                        <button
-                          onClick={() => handelClickShoe(index)}
-                          className={` text-sm rounded-[1px]  ring-1 ring-gray-800 ring-opacity-50 px-3 m-4 w-[100px] h-[50px] hover:bg-gray-100`}
-                        >
-                          US M: {item.size}{" "}
-                          <p className="text-green-800">${item.price}</p>
-                        </button>
-                      ) : (
-                        <button
-                          className={` text-sm  rounded-[1px] ring-1 ring-gray-800 ring-opacity-50 px-3 m-4 w-[100px] h-[50px] hover:bg-gray-100`}
-                          onClick={() => onlyBid(index)}
-                        >
-                          US M: {item.size} <p>Bid</p>
-                        </button>
-                      )}
-                    </div>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ) : null}
-        </div>
-
-        {!open ? (
-          !isOnlyBid ? (
-            data.sizes ? (
-              <div className="flex ">
-                <button className=" x-7 py-2 m-6 p-3 bg-gray-300 hover:bg-gray-400">
-                  Place Bid
-                </button>
-                <button
-                  onClick={handelBuyButton}
-                  className=" bg-green-800 text-white hover:bg-green-900 px-7 py-2 m-6"
-                >
-                  Buy CA$ {data.sizes[index].price}
-                </button>
-              </div>
-            ) : null
-          ) : (
-            <button className="rounded x-7 py-2 m-6 p-3 w-2/3 bg-gray-300 hover:bg-gray-400">
-              Place Bid
-            </button>
-          )
-        ) : null}
-           <div className="border-t border-gray-300 w-full"></div>
-           <button className="m-6 mx-1 text-green-800 w-full">Sell for $71 or Ask for More</button>
-
-        {displayAdd ? (
-          props.isLogIn ? (
-            <p className="font-bold">
-              Shoe {data.name} has been added into your cart
-            </p>
-          ) : (
-            <p className="font-bold">Please Log In first</p>
-          )
-        ) : null}
+      <div className="border-t border-gray-300 w-auto m-2"></div>
+      <p className="my-1 font-bold">Related Products</p>
+      <div>
+        {relateShoe.length !== 0 && <RowPagination shoeArr={relateShoe} />}
       </div>
-    </div>
-    <div className="border-t border-gray-300 w-auto m-2"></div>
-    <p className="my-1 font-bold">Related Products</p>
-    <div>
-      {relateShoe.length!==0&&<RowPagination shoeArr={relateShoe}/>}
-    </div>
+      <div>
+        <div className="border-t border-gray-300 w-auto m-2"></div>
+        <div>
+          <p className="my-1 font-bold">Recent View</p>
+        </div>
+      </div>
     </div>
   );
 };

@@ -37,7 +37,7 @@ const getUserByLogIn=async(req,res)=>{
         }
         else if (result) {
           const token=jwt.sign({userID},secretKey,{expiresIn:'1h'})
-          res.cookie('token',token,{ expires: new Date(Date.now() + 3600000),httpOnly: true})
+          res.cookie('logInToken',token,{ expires: new Date(Date.now() + 3600000),httpOnly: true})
           return res.status(200).json({success:true})
         }
         else{
@@ -58,7 +58,7 @@ const getUserByToken =async(req,res)=> {
 }
 
 const logOut=async(req,res)=>{
-  return res.status(200).clearCookie('token').json({message:"successfully log out"})
+  return res.status(200).clearCookie('token').json({message:"sucessfully log cout"})
 }
 
 const addShoeToCart=async (req,res)=>{

@@ -9,6 +9,7 @@ const connectDB=require('./database/db')
 const nikeRoutes=require('./routes/product/nike')
 const payRouters=require('./routes/payment/payment')
 const userRoute=require('./routes/user/users')
+const searchRoute=require('./routes/search/search')
 // middleware
 app.use(express.json())
 app.use(cookieParser())
@@ -16,10 +17,10 @@ app.use(cookieParser())
 app.use('/api/v1',nikeRoutes)
 app.use('/api/v1/payment',payRouters)
 app.use('/api/v1/logIn',userRoute)
+app.use('/api/v1/search',searchRoute)
 // incorrect routes
 app.use(notFound)
 app.use(errorHandler)
-
 
 const port=process.env.PORT||3000
 const start=async ()=>{
