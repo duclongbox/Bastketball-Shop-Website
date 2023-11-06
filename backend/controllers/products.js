@@ -13,9 +13,10 @@ const getAllproducts = async (req, res) => {
 // get the specific nike shoe by the name
 // eg: http://localhost:3000/api/v1/name/nike1
 const getProductsByName = async (req, res) => {
-  const { name } = req.params;
+  const { shoeName } = req.params;
   const { size } = req.query;
-  let query = { name: name };
+  console.log("debug");
+  let query = { name: shoeName };
   let selectShoe;
   query.size = size;
   selectShoe = await shoes.find(query).select("_id brand name sizes imageURL");

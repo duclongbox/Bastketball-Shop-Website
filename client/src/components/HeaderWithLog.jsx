@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./utility/SearchBar";
 import HandelLogOut from "./utility/HandelLogOut";
-const HeaderWithLog = ({updateState}) => {
+const HeaderWithLog = ({updateState},{getSearchState,handleChange}) => {
   const navigate=useNavigate();
   const [barVisible, setBarVisible] = useState(false);
   const [openModal,setOpenModal]=useState(false)
@@ -38,7 +38,7 @@ const HeaderWithLog = ({updateState}) => {
         >
           Shoe Shop
         </Link>
-        <SearchBar />
+        <SearchBar handleChange={handleChange} />
         <div
           onMouseEnter={onMouse}
           onMouseLeave={mouseLeave}

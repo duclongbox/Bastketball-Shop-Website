@@ -15,10 +15,13 @@ const ShoeInfo = (props) => {
   const [reminder, setReminder] = useState(false);
   const [isOnlyBid, setisOnlyBid] = useState(false);
   const [relateShoe, setRelateShoe] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response1 = await fetch(`api/v1/name/${shoeName}`);
+        console.log(shoeName);
+        const response1 = await fetch(`../api/v1/name/${shoeName}`);
+        console.log('API Response:', response1);
         const apiData1 = await response1.json();
         setData(apiData1);
         // get the cheapest size with price
@@ -39,7 +42,7 @@ const ShoeInfo = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-    const response2 = await fetch(`api/v1/relate/${shoeName}`);
+    const response2 = await fetch(`../api/v1/relate/${shoeName}`);
     const apiData2 = await response2.json();
     setRelateShoe(apiData2);
     }

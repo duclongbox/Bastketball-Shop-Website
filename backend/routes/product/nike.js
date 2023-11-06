@@ -5,7 +5,7 @@ const {getAllproducts,getProductsByName,getProductInCart,getRelateProduct}=requi
 
 
 router.get('/brand/:brand', getAllproducts);
-router.get('/name/:name',getProductsByName)
+router.get('/name/:shoeName',getProductsByName)
 router.get('/cart/:id',getProductInCart)
 router.get('/relate/:name',getRelateProduct)
 
