@@ -1,6 +1,6 @@
 import {React} from 'react'
 import {AiOutlineSearch} from 'react-icons/ai'
-const SearchBar = ({handleChange}) => {
+const SearchBar = ({handleChange,clearSearch,clearSearchTerm,searchTerm}) => {
   
 return (
   <div>
@@ -10,8 +10,10 @@ return (
     placeholder="Enter brand or name"
     onChange={(e) => handleChange(e)}
     className="w-full py-2 pl-10 pr-4"
+    value={searchTerm}
   />
   <AiOutlineSearch className="absolute left-3 top-3 text-gray-500" />
+  {clearSearch&&<button className='absolute right-3 top-2 font-semibold' onClick={clearSearchTerm}>X</button>}
   </div>
 </div>
 

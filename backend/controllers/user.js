@@ -98,8 +98,6 @@ const addShoeToCart=async (req,res)=>{
       return res.status(409).json({success:false,message:"You are following this shoe"})
     }
     else{
-      console.log(newItem);
-      console.log(userID);
       await users.findOneAndUpdate(
         {userID:userID},
         { $push: { favorItem: newItem } },

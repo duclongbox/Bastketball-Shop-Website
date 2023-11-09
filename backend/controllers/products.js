@@ -15,7 +15,6 @@ const getAllproducts = async (req, res) => {
 const getProductsByName = async (req, res) => {
   const { shoeName } = req.params;
   const { size } = req.query;
-  console.log("debug");
   let query = { name: shoeName };
   let selectShoe;
   query.size = size;

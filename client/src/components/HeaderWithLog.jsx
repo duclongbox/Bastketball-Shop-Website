@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./utility/SearchBar";
 import HandelLogOut from "./utility/HandelLogOut";
-const HeaderWithLog = ({updateState},{getSearchState,handleChange}) => {
+const HeaderWithLog = ({updateState,disLoadSearch,searchTerm,clearSearchTerm,clearSearch,handleChange}) => {
   const navigate=useNavigate();
   const [barVisible, setBarVisible] = useState(false);
   const [openModal,setOpenModal]=useState(false)
@@ -35,10 +35,11 @@ const HeaderWithLog = ({updateState},{getSearchState,handleChange}) => {
         <Link
           to="/"
           className="text-green-900 text-4xl font-bold cursor-pointer"
+          onClick={disLoadSearch()}
         >
           Shoe Shop
         </Link>
-        <SearchBar handleChange={handleChange} />
+        <SearchBar searchTerm={searchTerm}  clearSearchTerm={clearSearchTerm} clearSearch={clearSearch}  handleChange={handleChange} />
         <div
           onMouseEnter={onMouse}
           onMouseLeave={mouseLeave}

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
@@ -21,17 +20,29 @@ function App() {
   const [isLoadSearch, setLoadSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [clearSearch, setClearSearch] = useState(false);
 
-  const handleChange = async (event) => {
-    const updatedSearchTerm = event.target.value;
+  const handleChange = (event) => {
+    const updatedSearchTerm =  event.target.value;
     setSearchTerm(updatedSearchTerm);
+  };
+
+  const clearSearchTerm = () => {
+    console.log("debu");
+    setSearchTerm("");
+  };
+
+  const disLoadSearch = () => {
+    setLoadSearch(false);
   };
 
   useEffect(() => {
     if (searchTerm !== "") {
       setLoadSearch(true);
+      setClearSearch(true);
     } else {
       setLoadSearch(false);
+      setClearSearch(false);
     }
   }, [searchTerm]);
 
@@ -79,9 +90,18 @@ function App() {
     <div>
       <Router>
         {!isLogIn ? (
-          <Header handleChange={handleChange} />
+          <Header
+            searchTerm={searchTerm}
+            clearSearchTerm={clearSearchTerm}
+            clearSearch={clearSearch}
+            disLoadSearch={disLoadSearch}
+            handleChange={handleChange}
+          />
         ) : (
           <HeaderWithLog
+            clearSearchTerm={clearSearchTerm}
+            clearSearch={clearSearch}
+            disLoadSearch={disLoadSearch}
             updateState={updateLogState}
             handleChange={handleChange}
           />
@@ -116,10 +136,18 @@ function App() {
               <Route path="/profile/edit" element={<ProfileEdit />} />
             </>
           ) : (
-            <Route
-              path="/"
-              element={<LoadSearch searchResults={searchResults} />}
-            />
+            <>
+              {["/", "/:brand", "/shoe/:shoeName"].map((path, index) => (
+                <Route key={index}
+                  path={path}
+                  element={
+                    <LoadSearch
+                      searchResults={searchResults}
+                    />
+                  }
+                />
+              ))}
+            </>
           )}
         </Routes>
       </Router>
