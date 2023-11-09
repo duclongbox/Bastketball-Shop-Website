@@ -32,6 +32,7 @@ const Cart = ({updateState}) => {
       try {
         let apiData;
         const response = await fetch("/api/v1/logIn/getCart");
+        console.log(response);
         apiData = await response.json();
 
         // fetch the shoe info based on shoe id and the index of price size
@@ -88,7 +89,7 @@ const Cart = ({updateState}) => {
                 return (
                   <div key={index}>
                     <div className="flex">
-                      <Link to={`../${element.name}`}>
+                      <Link to={`../shoe/${element.name}`}>
                         <img
                           src={element.imageURL}
                           alt="shoe img"
@@ -147,7 +148,7 @@ const Cart = ({updateState}) => {
                 return (
                   <div key={index}>
                     <div className="flex">
-                      <Link to={`../${element.name}`}>
+                      <Link to={`../shoe/${element.name}`}>
                         <img
                           src={element.imageURL}
                           alt="shoe img"

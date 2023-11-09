@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const secretKey=process.env.SECRET_KEY
 
 const verifyToken=((req,res,next)=>{
-    const token=req.cookies.token
+    const token=req.cookies.logInToken
     if (!token) {
         return res.status(401).json({success:false,message:"cannot find token"})
     }

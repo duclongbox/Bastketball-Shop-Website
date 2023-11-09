@@ -35,11 +35,11 @@ const HeaderWithLog = ({updateState,disLoadSearch,searchTerm,clearSearchTerm,cle
         <Link
           to="/"
           className="text-green-900 text-4xl font-bold cursor-pointer"
-          onClick={disLoadSearch()}
+           onClick={disLoadSearch}
         >
           Shoe Shop
         </Link>
-        <SearchBar searchTerm={searchTerm}  clearSearchTerm={clearSearchTerm} clearSearch={clearSearch}  handleChange={handleChange} />
+        <SearchBar searchTerm={searchTerm}  clearSearchTerm={clearSearchTerm} clearSearch={clearSearch}  handleChange={handleChange} />      
         <div
           onMouseEnter={onMouse}
           onMouseLeave={mouseLeave}

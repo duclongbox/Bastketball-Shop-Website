@@ -24,11 +24,10 @@ function App() {
 
   const handleChange = (event) => {
     const updatedSearchTerm =  event.target.value;
-    setSearchTerm(updatedSearchTerm);
+     setSearchTerm(updatedSearchTerm);
   };
 
   const clearSearchTerm = () => {
-    console.log("debu");
     setSearchTerm("");
   };
 
@@ -64,11 +63,11 @@ function App() {
     };
     fetchData();
   }, [searchTerm]);
-
+  // search result success
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("api/v1/logIn/token");
+        const response = await fetch("/api/v1/logIn/token");
         if (response.status === 200) {
           setisLogIn(true);
         }
@@ -99,6 +98,7 @@ function App() {
           />
         ) : (
           <HeaderWithLog
+            searchTerm={searchTerm}
             clearSearchTerm={clearSearchTerm}
             clearSearch={clearSearch}
             disLoadSearch={disLoadSearch}
