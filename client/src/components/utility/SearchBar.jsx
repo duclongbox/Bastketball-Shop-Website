@@ -3,7 +3,7 @@ import {AiOutlineSearch} from 'react-icons/ai'
 const SearchBar = ({handleChange,clearSearch,clearSearchTerm,searchTerm}) => {
   
 return (
-  <div>
+<div>
 <div className="flex border-2 border-black w-[600px] mx-[200px] bg-gray-100 relative">
   <input
     type="text"

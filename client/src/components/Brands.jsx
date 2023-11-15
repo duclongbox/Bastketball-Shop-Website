@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 const Brands = () => {
   return (
     <div >
+      <div>
+        
+      </div>
+
         <h1 className="text-green-900 font-bold p-4">Find out what you want</h1>
         <div className='flex justify-between p-10'>
         <Link to="/nike" >

@@ -1,16 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-const LoadSearch = (searchResults) => {
-  const debug=(e)=>{
-    e.preventDefault();
-    console.log("debug");}
+const LoadSearch = ({searchResults,disLoadSearch}) => {
   return (
     <div>
-      {searchResults.searchResults.result.length>0&&searchResults.searchResults.result.map((item,index) => {
+      { searchResults.result.map((item,index) => {
         return (
         <div className='mx-auto my-3 w-3/4  justify-left'>
 
-        <Link  to={`/shoe/${item.name}`} >
+        <Link  to={`/shoe/${item.name}`}  onClick={disLoadSearch} >
 
         <div key={index} className=' flex mx-[30px] items-center '>
           <img src={item.imageURL} alt="" className='w-[120px]' />

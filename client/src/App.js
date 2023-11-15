@@ -21,10 +21,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [clearSearch, setClearSearch] = useState(false);
-
+  const [isLoadSearchResult, setLoadSearchResult] = useState(false);
   const handleChange = (event) => {
-    const updatedSearchTerm =  event.target.value;
-     setSearchTerm(updatedSearchTerm);
+    const updatedSearchTerm = event.target.value;
+    setSearchTerm(updatedSearchTerm);
   };
 
   const clearSearchTerm = () => {
@@ -32,6 +32,7 @@ function App() {
   };
 
   const disLoadSearch = () => {
+    console.log("debug1");
     setLoadSearch(false);
   };
 
@@ -56,7 +57,8 @@ function App() {
           body: JSON.stringify({ searchTerm: searchTerm }),
         });
         const apiData = await response.json();
-        setSearchResults(apiData);
+        await setSearchResults(apiData);
+        setLoadSearchResult(true);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -137,16 +139,22 @@ function App() {
             </>
           ) : (
             <>
-              {["/", "/:brand", "/shoe/:shoeName"].map((path, index) => (
-                <Route key={index}
-                  path={path}
-                  element={
-                    <LoadSearch
-                      searchResults={searchResults}
+              {["/", "/:brand", "/shoe/:shoeName"].map(
+                (path, index) =>
+                  // Check if isLoadSearchResult is true before rendering the Route
+                  isLoadSearchResult && (
+                    <Route
+                      key={index}
+                      path={path}
+                      element={
+                        <LoadSearch
+                          searchResults={searchResults}
+                          disLoadSearch={disLoadSearch}
+                        />
+                      }
                     />
-                  }
-                />
-              ))}
+                  )
+              )}
             </>
           )}
         </Routes>

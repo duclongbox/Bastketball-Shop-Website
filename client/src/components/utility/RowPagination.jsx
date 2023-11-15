@@ -8,6 +8,7 @@ const [viewItem,setViewItem]=useState([])
 const [lastIndex,setLastIndex]=useState(4)
 const [nextButton,setNextButton]=useState(false)
 const [previsouButton,setPrevisouButton]=useState(false)
+const [isTransition,setIsTransition]=useState(false)
 useEffect(() => {
   if (shoeArr.length>5) {
     const viewItem=shoeArr.slice(0,lastIndex+1)
@@ -28,6 +29,7 @@ const handelClickNext=()=>{
     setLastIndex(lastIndex+4)
     setViewItem(viewItem)
     setPrevisouButton(true)
+    
   }
   else {
     setNextButton(false)
@@ -35,6 +37,7 @@ const handelClickNext=()=>{
     const viewItem=shoeArr.slice(lastIndex+1,shoeArr.length)
     setViewItem(viewItem)
   }
+  setIsTransition(true)
 }
 
 const handleClickPrevious = () => {
@@ -49,14 +52,15 @@ const handleClickPrevious = () => {
     setPrevisouButton(false);
     setNextButton(true);
   }
+  setIsTransition(true)
 };
 
   return (
     <div className="flex">
       {previsouButton&&<button onClick={handleClickPrevious} ><GrPrevious/></button>}
-      <div className="flex w-11/12 m-auto">
+      <div className="flex w-11/12 m-auto ">
       {viewItem.map((item,index)=>{
-        return <div key={index} className="w-1/5 m-auto">
+        return <div key={index} className={`w-1/5 m-auto transition-opacity duration-300 ease-in-out`}>
           <Link to={`/${item.name}`}>
           <img src={item.imageURL} alt="shoe" className="w-[120px] h-[140px]" />
           <p className="w-[120px]">{item.name.split("-")[0]}</p>
